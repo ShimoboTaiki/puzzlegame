@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniTask.Addressables", "Uni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{aa6944fa-181d-0da7-2bb6-61f076a40e5e}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{0ad4c06d-2397-2767-a5af-2c5be0a2ce06}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniTask.Editor", "UniTask.Editor.csproj", "{41ece80f-12c0-9f2b-ca49-37fb852a59c4}"
 EndProject
 Global
@@ -32,6 +34,8 @@ Global
 		{e94a338a-babe-e77e-64f4-acf283f804c8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{aa6944fa-181d-0da7-2bb6-61f076a40e5e}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{aa6944fa-181d-0da7-2bb6-61f076a40e5e}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ad4c06d-2397-2767-a5af-2c5be0a2ce06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ad4c06d-2397-2767-a5af-2c5be0a2ce06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41ece80f-12c0-9f2b-ca49-37fb852a59c4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{41ece80f-12c0-9f2b-ca49-37fb852a59c4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
