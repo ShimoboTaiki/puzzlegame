@@ -1,6 +1,6 @@
 namespace Puzzle{
     public enum Type{
-        red,
+        red=0,
         blue,
         green,
         yellow
