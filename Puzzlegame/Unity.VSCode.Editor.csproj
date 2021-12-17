@@ -57,13 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Library/PackageCache/com.unity.ide.vscode@1.2.4/Editor/VSCodeDiscovery.cs" />
+    <Compile Include="Library/PackageCache/com.unity.ide.vscode@1.2.4/Editor/ProjectGeneration/StringUtils.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.vscode@1.2.4/Editor/ProjectGeneration/GUIDGenerator.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.vscode@1.2.4/Editor/ProjectGeneration/AssemblyNameProvider.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.vscode@1.2.4/Editor/ProjectGeneration/ProjectGeneration.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.vscode@1.2.4/Editor/ProjectGeneration/FileIO.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.vscode@1.2.4/Editor/ProjectGeneration/ProjectGenerationFlag.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.vscode@1.2.4/Editor/VSCodeScriptEditor.cs" />
-    <Compile Include="Library/PackageCache/com.unity.ide.vscode@1.2.4/Editor/ProjectGeneration/StringUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library/PackageCache/com.unity.ide.vscode@1.2.4/Editor/Unity.com.unity.vscode.Editor.asmdef" />
@@ -306,6 +306,9 @@
     <Reference Include="UnityEditor.iOS.Extensions">
       <HintPath>/Applications/Unity/Hub/Editor/2020.3.15f2/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library/PackageCache/com.unity.collab-proxy@1.7.1/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -323,9 +326,6 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library/PackageCache/com.unity.collab-proxy@1.7.1/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
-    </Reference>
-    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
-      <HintPath>/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>

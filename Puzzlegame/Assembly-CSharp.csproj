@@ -59,6 +59,11 @@
     <Compile Include="Assets/Mygamefolder/Scripts/Puzzle/Board.cs" />
     <Compile Include="Assets/Mygamefolder/Scripts/Puzzle/Drop.cs" />
     <Compile Include="Assets/Mygamefolder/Scripts/Puzzle/Type.cs" />
+    <Compile Include="Assets/Mygamefolder/Scripts/SingletonMonoBehaviour.cs" />
+    <Compile Include="Assets/Mygamefolder/Scripts/Manager/ColorManager.cs" />
+    <Compile Include="Assets/Mygamefolder/Scripts/Player/DropMovement.cs" />
+    <Compile Include="Assets/Mygamefolder/Scripts/Manager/DropInputManager.cs" />
+    <Compile Include="Assets/Mygamefolder/Scripts/Manager/ParameterManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

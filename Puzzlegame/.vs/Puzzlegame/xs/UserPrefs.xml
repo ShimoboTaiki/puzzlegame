@@ -1,13 +1,26 @@
 ﻿<Properties StartupConfiguration="{6DC0D40A-9723-6727-A5AF-2C5BE0A2CE06}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Mygamefolder/Scripts/Puzzle/Board.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Mygamefolder/Scripts/Manager/ParameterManager.cs">
     <Files>
-      <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Drop.cs" Line="1" Column="1" />
-      <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Board.cs" Line="8" Column="12" />
+      <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Drop.cs" Line="22" Column="79" />
+      <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Board.cs" Line="17" Column="38" />
+      <File FileName="Assets/Mygamefolder/Scripts/SingletonMonoBehaviour.cs" Line="48" Column="2" />
+      <File FileName="Assets/Mygamefolder/Scripts/Manager/ColorManager.cs" Line="9" Column="15" />
+      <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Type.cs" Line="2" Column="17" />
+      <File FileName="Assets/Mygamefolder/Scripts/Player/DropMovement.cs" Line="12" Column="1" />
+      <File FileName="Assets/Mygamefolder/Scripts/Manager/DropInputManager.cs" Line="8" Column="9" />
+      <File FileName="Assets/Mygamefolder/Scripts/Manager/ParameterManager.cs" Line="5" Column="42" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Unity" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="6add113e-fa7a-4ce9-afb4-e659a183a1f4" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b71196c7-6934-4ba2-8501-4b3ba6555623" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
