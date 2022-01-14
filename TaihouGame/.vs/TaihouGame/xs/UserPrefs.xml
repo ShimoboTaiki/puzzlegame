@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{BC359BB7-C022-42A4-3A1C-9CB21D3AC95C}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/StageManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/BallCountManager.cs" Line="27" Column="31" />
+      <File FileName="Assets/Scripts/GoStageButton.cs" />
+      <File FileName="Assets/Scripts/Stage.cs" Line="19" Column="42" />
+      <File FileName="Assets/Scripts/StageManager.cs" Line="41" Column="57" />
+      <File FileName="Assets/Scripts/StageSelectButton.cs" />
+      <File FileName="Assets/Scripts/BlockManager.cs" />
+      <File FileName="Assets/Scripts/Block.cs" />
+      <File FileName="Assets/Scripts/Ball.cs" />
+      <File FileName="Assets/Scripts/Drag.cs" />
+      <File FileName="Assets/Scripts/Cannon.cs" />
+      <File FileName="Assets/Scripts/Hassya.cs" Line="39" Column="42" />
+      <File FileName="Assets/Scripts/BaneManager.cs" />
+      <File FileName="Assets/Scripts/EnemyManager.cs" />
+      <File FileName="Assets/Scripts/Enemy.cs" />
+      <File FileName="Assets/Scripts/ClearButtonManager.cs" />
+      <File FileName="Assets/Scripts/GameClear.cs" />
+      <File FileName="Assets/Scripts/StartButton.cs" />
+      <File FileName="Assets/Scripts/GameOver.cs" />
+      <File FileName="Assets/Scripts/FBlockManager.cs" Line="7" Column="48" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="34c83191-d8af-4471-b102-47da744a0646" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

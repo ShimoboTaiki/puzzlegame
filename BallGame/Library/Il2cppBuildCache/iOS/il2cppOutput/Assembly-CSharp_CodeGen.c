@@ -1,0 +1,318 @@
+﻿#include "pch-c.h"
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+// 0x00000001 System.Void Bane::Start()
+extern void Bane_Start_m587CB552B95DE445DDD7363EE28C0D29512DA27E (void);
+// 0x00000002 System.Void Bane::Update()
+extern void Bane_Update_m1B51030660A8F6A08F871645B6DB88AE79802D10 (void);
+// 0x00000003 System.Void Bane::.ctor()
+extern void Bane__ctor_m7DCD7A7323DCCDD422D0165B8E4D5495785C9A93 (void);
+// 0x00000004 System.Void BaneManager::Start()
+extern void BaneManager_Start_m106FDFE2C11BBDDB5C751745C81BC86FB28B36F3 (void);
+// 0x00000005 System.Void BaneManager::Update()
+extern void BaneManager_Update_mFBAC6D45493FAF55C7A3E13E9C43020ED926B6A0 (void);
+// 0x00000006 System.Void BaneManager::.ctor()
+extern void BaneManager__ctor_m710BF72E64A659980EF0BD860AB9167FE36FC12F (void);
+// 0x00000007 System.Void BaneManager/<Start>d__4::MoveNext()
+extern void U3CStartU3Ed__4_MoveNext_mD47117396062AE60DA52E74ACEDBE7C5FBB9D7E9 (void);
+// 0x00000008 System.Void BaneManager/<Start>d__4::SetStateMachine(System.Runtime.CompilerServices.IAsyncStateMachine)
+extern void U3CStartU3Ed__4_SetStateMachine_mA3BAF966907917A1FC5E12C3BE0C2F0E80D31B39 (void);
+// 0x00000009 System.Void GoalManager::Start()
+extern void GoalManager_Start_m624F136D961205490C8D16DC1921C6F3523D500F (void);
+// 0x0000000A System.Void GoalManager::Update()
+extern void GoalManager_Update_m57F86430FA730B69C534FFD53CC28945431A31C8 (void);
+// 0x0000000B System.Void GoalManager::.ctor()
+extern void GoalManager__ctor_mEC93F6107ACE34D996D5D8565C1611F9B2F4E1B8 (void);
+// 0x0000000C System.Void Hurubasyo::Start()
+extern void Hurubasyo_Start_m4AB1C17B709F4096538DD12EABBDDB3EFCD7A935 (void);
+// 0x0000000D System.Void Hurubasyo::Update()
+extern void Hurubasyo_Update_m9CEFD1D0F860ADDD074335A68F9E3F0047C5DA55 (void);
+// 0x0000000E System.Void Hurubasyo::.ctor()
+extern void Hurubasyo__ctor_mD163E34865F8FC8037624AFCEE5B9EA0EC110063 (void);
+// 0x0000000F System.Void Item::OnTriggerEnter2D(UnityEngine.Collider2D)
+extern void Item_OnTriggerEnter2D_m018EFDDA7DA33E9F8359C544BB7BDF56AED9FB84 (void);
+// 0x00000010 System.Void Item::.ctor()
+extern void Item__ctor_m51C5ECE57526347477E1E2A4CF519CF555BC8147 (void);
+// 0x00000011 System.Void Jama::Start()
+extern void Jama_Start_m88A6AF9A5B5C057D503803809B2520A8ECAAF40E (void);
+// 0x00000012 System.Void Jama::Update()
+extern void Jama_Update_m5F47AFFB6049794365B076BE460DDDCE08A1F74C (void);
+// 0x00000013 System.Void Jama::OnCollisionEnter2D(UnityEngine.Collision2D)
+extern void Jama_OnCollisionEnter2D_m6DAF7B00B4209809994B3C460B970EDEB44BDCA3 (void);
+// 0x00000014 System.Void Jama::.ctor()
+extern void Jama__ctor_m937327D703B1A3E347BF29B64C144F8D7B79E64C (void);
+// 0x00000015 System.Void JamaManager::Start()
+extern void JamaManager_Start_m120B82AC223E2D8C06C874AC9D63540ED6047B2B (void);
+// 0x00000016 System.Void JamaManager::Update()
+extern void JamaManager_Update_m15D39633FBC989BEC71017A6D54716B23CEF22C7 (void);
+// 0x00000017 System.Void JamaManager::.ctor()
+extern void JamaManager__ctor_mA1CCEA7576AFBDD15C2EC133500875CF45173EEE (void);
+// 0x00000018 System.Void JamaManager/<Start>d__4::MoveNext()
+extern void U3CStartU3Ed__4_MoveNext_mE4DE5BD517C17D51093CC70996CA2D1AE16C99B0 (void);
+// 0x00000019 System.Void JamaManager/<Start>d__4::SetStateMachine(System.Runtime.CompilerServices.IAsyncStateMachine)
+extern void U3CStartU3Ed__4_SetStateMachine_mB7EDE59F70E7B84FFDF71C7CEA7DFAC81B4030E5 (void);
+// 0x0000001A System.Void MouseDrag::OnMouseDown()
+extern void MouseDrag_OnMouseDown_m8E08DFA43F125D2AF4D8AABDFC0EFE09FFBE8DAD (void);
+// 0x0000001B System.Void MouseDrag::OnMouseDrag()
+extern void MouseDrag_OnMouseDrag_m12DB8990E0CFA6935AB860E70FE7EB5655234732 (void);
+// 0x0000001C System.Void MouseDrag::.ctor()
+extern void MouseDrag__ctor_m84FF6A779F28E1479135610AD9914BCB54C22585 (void);
+// 0x0000001D System.Void Stage::.ctor(System.Int32,System.Collections.Generic.List`1<UnityEngine.Vector3>,System.Collections.Generic.List`1<UnityEngine.Vector2>,UnityEngine.Vector3,UnityEngine.Vector3,System.Collections.Generic.List`1<UnityEngine.Vector2>,System.Collections.Generic.List`1<UnityEngine.Vector4>)
+extern void Stage__ctor_m82D5D02E537C1883D32B8FF2C0764E16E0D3FE2D (void);
+// 0x0000001E System.Void StageNum::Start()
+extern void StageNum_Start_m8A167290F0135433705356C8A08033B7BF427668 (void);
+// 0x0000001F System.Void StageNum::Update()
+extern void StageNum_Update_m56E06A8EBA1985BC32E1FD242768A9607835D378 (void);
+// 0x00000020 System.Void StageNum::.ctor()
+extern void StageNum__ctor_mD60662AAB43EBEE2412BD67A7968C9AB2FC11C69 (void);
+// 0x00000021 System.Void ViewGameClear::Start()
+extern void ViewGameClear_Start_m75857B8E38A8B7FAEBC694CFA3C6D5FEC677E562 (void);
+// 0x00000022 System.Void ViewGameClear::OnTriggerEnter2D(UnityEngine.Collider2D)
+extern void ViewGameClear_OnTriggerEnter2D_m2253E46EE8055D685A27018E24359F61FBBB6C49 (void);
+// 0x00000023 System.Void ViewGameClear::.ctor()
+extern void ViewGameClear__ctor_m1C35BDC7392FE333439F6E66CEAE8069034E6E91 (void);
+// 0x00000024 System.Void Yuka::.ctor()
+extern void Yuka__ctor_m5CF8F80A1CA50C8121807BB783362F7D2C315AC9 (void);
+// 0x00000025 System.Void YukaManager::Start()
+extern void YukaManager_Start_mD947A725CFB06E262CF49E8B189B7431FE55A81D (void);
+// 0x00000026 System.Void YukaManager::Update()
+extern void YukaManager_Update_m534D5A6C69C3F9B15E5C936FDA249E37131B187A (void);
+// 0x00000027 System.Void YukaManager::.ctor()
+extern void YukaManager__ctor_m5E1FCF04938BCE37FD3302AD72FA324590527F8C (void);
+// 0x00000028 System.Void StageM.StageManager::Start()
+extern void StageManager_Start_mA04D33AC675139F1DE1D5DCA7F5375501691E97B (void);
+// 0x00000029 System.Void StageM.StageManager::ResetList()
+extern void StageManager_ResetList_mC2DC4E71A1BBC348A67CB0132FA603E69B80850D (void);
+// 0x0000002A System.Void StageM.StageManager::CreateStage(System.Int32)
+extern void StageManager_CreateStage_m69A51EAD6C66DADD91E7130336076089B77FC34F (void);
+// 0x0000002B System.Void StageM.StageManager::.ctor()
+extern void StageManager__ctor_m76EEAD6CC3F62E7EF1310A3F08D1361BF3AE9D45 (void);
+// 0x0000002C System.Void StageM.StageManager::.cctor()
+extern void StageManager__cctor_m564FC7D187F94962BD7580A8C8E55778B32DEE52 (void);
+// 0x0000002D System.Void ItemM.ItemManager::Start()
+extern void ItemManager_Start_m612A72E598B35997BD30AE4BEB3B644C2952F56A (void);
+// 0x0000002E System.Void ItemM.ItemManager::Update()
+extern void ItemManager_Update_m0759169E7A9DFEFD091A5EA2344347F9940196EC (void);
+// 0x0000002F System.Void ItemM.ItemManager::.ctor()
+extern void ItemManager__ctor_m4461E6856EA35DF797A85AC2895ED861D022E381 (void);
+// 0x00000030 System.Void ItemM.ItemManager/<Start>d__4::MoveNext()
+extern void U3CStartU3Ed__4_MoveNext_m2FC50C2A8A9FA7F22AED85BAF964868FCDB6B2B3 (void);
+// 0x00000031 System.Void ItemM.ItemManager/<Start>d__4::SetStateMachine(System.Runtime.CompilerServices.IAsyncStateMachine)
+extern void U3CStartU3Ed__4_SetStateMachine_m765E2CCF8A074D2695B7A6DA48584095946B9378 (void);
+// 0x00000032 System.Void StartPush.GameStart::Start()
+extern void GameStart_Start_m45FBD415B9B8868854A38CB4F3B9111228CAF082 (void);
+// 0x00000033 System.Void StartPush.GameStart::Update()
+extern void GameStart_Update_m2EADB6E802BC1A97FFF7153D3E66C4685539A469 (void);
+// 0x00000034 System.Void StartPush.GameStart::Onclicked()
+extern void GameStart_Onclicked_mE039FE8145BF020F0AB19B6E49A9FE3A211FFA19 (void);
+// 0x00000035 System.Void StartPush.GameStart::.ctor()
+extern void GameStart__ctor_m2867A322B96EEF7A076286843FDD8123DCB3299B (void);
+// 0x00000036 System.Void StartPush.GameStart::.cctor()
+extern void GameStart__cctor_m26C022D85A0F83EC97DEC6014A4B48CBB0311BAE (void);
+// 0x00000037 System.Void StartPush.GameStart/<Start>d__5::MoveNext()
+extern void U3CStartU3Ed__5_MoveNext_m9A8AC10474ABD3305C91D25241FCAF693EF64B66 (void);
+// 0x00000038 System.Void StartPush.GameStart/<Start>d__5::SetStateMachine(System.Runtime.CompilerServices.IAsyncStateMachine)
+extern void U3CStartU3Ed__5_SetStateMachine_m479D0758D6DB5D1656032ADB711B1DECC3172AE9 (void);
+// 0x00000039 System.Void Reset.Ball::Start()
+extern void Ball_Start_mD89EC611C6375742C06539D3CFE00DC2582CB37B (void);
+// 0x0000003A System.Void Reset.Ball::Update()
+extern void Ball_Update_m9D70811284CFB32255DEF1771E78D87A1AA3E8FC (void);
+// 0x0000003B System.Void Reset.Ball::OnCollisionEnter2D(UnityEngine.Collision2D)
+extern void Ball_OnCollisionEnter2D_m23CCC0E0C72224BFFC1564DEE5C595CA5F57C044 (void);
+// 0x0000003C System.Void Reset.Ball::.ctor()
+extern void Ball__ctor_m43C5CC14B92154763EA8708A45B3FF517E9E2A74 (void);
+// 0x0000003D System.Void Reset.Ball::.cctor()
+extern void Ball__cctor_m82DFCABD7AB8A8AAD2544A5CF832D289528965C6 (void);
+// 0x0000003E System.Void Reset.Ball/<Start>d__6::MoveNext()
+extern void U3CStartU3Ed__6_MoveNext_m285C70891F06AD1C6AF600712A03FAE31E3AC221 (void);
+// 0x0000003F System.Void Reset.Ball/<Start>d__6::SetStateMachine(System.Runtime.CompilerServices.IAsyncStateMachine)
+extern void U3CStartU3Ed__6_SetStateMachine_m9B8A98BD1E42AE2104B9F66E57C6FEC3A448747B (void);
+static Il2CppMethodPointer s_methodPointers[63] = 
+{
+	Bane_Start_m587CB552B95DE445DDD7363EE28C0D29512DA27E,
+	Bane_Update_m1B51030660A8F6A08F871645B6DB88AE79802D10,
+	Bane__ctor_m7DCD7A7323DCCDD422D0165B8E4D5495785C9A93,
+	BaneManager_Start_m106FDFE2C11BBDDB5C751745C81BC86FB28B36F3,
+	BaneManager_Update_mFBAC6D45493FAF55C7A3E13E9C43020ED926B6A0,
+	BaneManager__ctor_m710BF72E64A659980EF0BD860AB9167FE36FC12F,
+	U3CStartU3Ed__4_MoveNext_mD47117396062AE60DA52E74ACEDBE7C5FBB9D7E9,
+	U3CStartU3Ed__4_SetStateMachine_mA3BAF966907917A1FC5E12C3BE0C2F0E80D31B39,
+	GoalManager_Start_m624F136D961205490C8D16DC1921C6F3523D500F,
+	GoalManager_Update_m57F86430FA730B69C534FFD53CC28945431A31C8,
+	GoalManager__ctor_mEC93F6107ACE34D996D5D8565C1611F9B2F4E1B8,
+	Hurubasyo_Start_m4AB1C17B709F4096538DD12EABBDDB3EFCD7A935,
+	Hurubasyo_Update_m9CEFD1D0F860ADDD074335A68F9E3F0047C5DA55,
+	Hurubasyo__ctor_mD163E34865F8FC8037624AFCEE5B9EA0EC110063,
+	Item_OnTriggerEnter2D_m018EFDDA7DA33E9F8359C544BB7BDF56AED9FB84,
+	Item__ctor_m51C5ECE57526347477E1E2A4CF519CF555BC8147,
+	Jama_Start_m88A6AF9A5B5C057D503803809B2520A8ECAAF40E,
+	Jama_Update_m5F47AFFB6049794365B076BE460DDDCE08A1F74C,
+	Jama_OnCollisionEnter2D_m6DAF7B00B4209809994B3C460B970EDEB44BDCA3,
+	Jama__ctor_m937327D703B1A3E347BF29B64C144F8D7B79E64C,
+	JamaManager_Start_m120B82AC223E2D8C06C874AC9D63540ED6047B2B,
+	JamaManager_Update_m15D39633FBC989BEC71017A6D54716B23CEF22C7,
+	JamaManager__ctor_mA1CCEA7576AFBDD15C2EC133500875CF45173EEE,
+	U3CStartU3Ed__4_MoveNext_mE4DE5BD517C17D51093CC70996CA2D1AE16C99B0,
+	U3CStartU3Ed__4_SetStateMachine_mB7EDE59F70E7B84FFDF71C7CEA7DFAC81B4030E5,
+	MouseDrag_OnMouseDown_m8E08DFA43F125D2AF4D8AABDFC0EFE09FFBE8DAD,
+	MouseDrag_OnMouseDrag_m12DB8990E0CFA6935AB860E70FE7EB5655234732,
+	MouseDrag__ctor_m84FF6A779F28E1479135610AD9914BCB54C22585,
+	Stage__ctor_m82D5D02E537C1883D32B8FF2C0764E16E0D3FE2D,
+	StageNum_Start_m8A167290F0135433705356C8A08033B7BF427668,
+	StageNum_Update_m56E06A8EBA1985BC32E1FD242768A9607835D378,
+	StageNum__ctor_mD60662AAB43EBEE2412BD67A7968C9AB2FC11C69,
+	ViewGameClear_Start_m75857B8E38A8B7FAEBC694CFA3C6D5FEC677E562,
+	ViewGameClear_OnTriggerEnter2D_m2253E46EE8055D685A27018E24359F61FBBB6C49,
+	ViewGameClear__ctor_m1C35BDC7392FE333439F6E66CEAE8069034E6E91,
+	Yuka__ctor_m5CF8F80A1CA50C8121807BB783362F7D2C315AC9,
+	YukaManager_Start_mD947A725CFB06E262CF49E8B189B7431FE55A81D,
+	YukaManager_Update_m534D5A6C69C3F9B15E5C936FDA249E37131B187A,
+	YukaManager__ctor_m5E1FCF04938BCE37FD3302AD72FA324590527F8C,
+	StageManager_Start_mA04D33AC675139F1DE1D5DCA7F5375501691E97B,
+	StageManager_ResetList_mC2DC4E71A1BBC348A67CB0132FA603E69B80850D,
+	StageManager_CreateStage_m69A51EAD6C66DADD91E7130336076089B77FC34F,
+	StageManager__ctor_m76EEAD6CC3F62E7EF1310A3F08D1361BF3AE9D45,
+	StageManager__cctor_m564FC7D187F94962BD7580A8C8E55778B32DEE52,
+	ItemManager_Start_m612A72E598B35997BD30AE4BEB3B644C2952F56A,
+	ItemManager_Update_m0759169E7A9DFEFD091A5EA2344347F9940196EC,
+	ItemManager__ctor_m4461E6856EA35DF797A85AC2895ED861D022E381,
+	U3CStartU3Ed__4_MoveNext_m2FC50C2A8A9FA7F22AED85BAF964868FCDB6B2B3,
+	U3CStartU3Ed__4_SetStateMachine_m765E2CCF8A074D2695B7A6DA48584095946B9378,
+	GameStart_Start_m45FBD415B9B8868854A38CB4F3B9111228CAF082,
+	GameStart_Update_m2EADB6E802BC1A97FFF7153D3E66C4685539A469,
+	GameStart_Onclicked_mE039FE8145BF020F0AB19B6E49A9FE3A211FFA19,
+	GameStart__ctor_m2867A322B96EEF7A076286843FDD8123DCB3299B,
+	GameStart__cctor_m26C022D85A0F83EC97DEC6014A4B48CBB0311BAE,
+	U3CStartU3Ed__5_MoveNext_m9A8AC10474ABD3305C91D25241FCAF693EF64B66,
+	U3CStartU3Ed__5_SetStateMachine_m479D0758D6DB5D1656032ADB711B1DECC3172AE9,
+	Ball_Start_mD89EC611C6375742C06539D3CFE00DC2582CB37B,
+	Ball_Update_m9D70811284CFB32255DEF1771E78D87A1AA3E8FC,
+	Ball_OnCollisionEnter2D_m23CCC0E0C72224BFFC1564DEE5C595CA5F57C044,
+	Ball__ctor_m43C5CC14B92154763EA8708A45B3FF517E9E2A74,
+	Ball__cctor_m82DFCABD7AB8A8AAD2544A5CF832D289528965C6,
+	U3CStartU3Ed__6_MoveNext_m285C70891F06AD1C6AF600712A03FAE31E3AC221,
+	U3CStartU3Ed__6_SetStateMachine_m9B8A98BD1E42AE2104B9F66E57C6FEC3A448747B,
+};
+extern void U3CStartU3Ed__4_MoveNext_mD47117396062AE60DA52E74ACEDBE7C5FBB9D7E9_AdjustorThunk (void);
+extern void U3CStartU3Ed__4_SetStateMachine_mA3BAF966907917A1FC5E12C3BE0C2F0E80D31B39_AdjustorThunk (void);
+extern void U3CStartU3Ed__4_MoveNext_mE4DE5BD517C17D51093CC70996CA2D1AE16C99B0_AdjustorThunk (void);
+extern void U3CStartU3Ed__4_SetStateMachine_mB7EDE59F70E7B84FFDF71C7CEA7DFAC81B4030E5_AdjustorThunk (void);
+extern void U3CStartU3Ed__4_MoveNext_m2FC50C2A8A9FA7F22AED85BAF964868FCDB6B2B3_AdjustorThunk (void);
+extern void U3CStartU3Ed__4_SetStateMachine_m765E2CCF8A074D2695B7A6DA48584095946B9378_AdjustorThunk (void);
+extern void U3CStartU3Ed__5_MoveNext_m9A8AC10474ABD3305C91D25241FCAF693EF64B66_AdjustorThunk (void);
+extern void U3CStartU3Ed__5_SetStateMachine_m479D0758D6DB5D1656032ADB711B1DECC3172AE9_AdjustorThunk (void);
+extern void U3CStartU3Ed__6_MoveNext_m285C70891F06AD1C6AF600712A03FAE31E3AC221_AdjustorThunk (void);
+extern void U3CStartU3Ed__6_SetStateMachine_m9B8A98BD1E42AE2104B9F66E57C6FEC3A448747B_AdjustorThunk (void);
+static Il2CppTokenAdjustorThunkPair s_adjustorThunks[10] = 
+{
+	{ 0x06000007, U3CStartU3Ed__4_MoveNext_mD47117396062AE60DA52E74ACEDBE7C5FBB9D7E9_AdjustorThunk },
+	{ 0x06000008, U3CStartU3Ed__4_SetStateMachine_mA3BAF966907917A1FC5E12C3BE0C2F0E80D31B39_AdjustorThunk },
+	{ 0x06000018, U3CStartU3Ed__4_MoveNext_mE4DE5BD517C17D51093CC70996CA2D1AE16C99B0_AdjustorThunk },
+	{ 0x06000019, U3CStartU3Ed__4_SetStateMachine_mB7EDE59F70E7B84FFDF71C7CEA7DFAC81B4030E5_AdjustorThunk },
+	{ 0x06000030, U3CStartU3Ed__4_MoveNext_m2FC50C2A8A9FA7F22AED85BAF964868FCDB6B2B3_AdjustorThunk },
+	{ 0x06000031, U3CStartU3Ed__4_SetStateMachine_m765E2CCF8A074D2695B7A6DA48584095946B9378_AdjustorThunk },
+	{ 0x06000037, U3CStartU3Ed__5_MoveNext_m9A8AC10474ABD3305C91D25241FCAF693EF64B66_AdjustorThunk },
+	{ 0x06000038, U3CStartU3Ed__5_SetStateMachine_m479D0758D6DB5D1656032ADB711B1DECC3172AE9_AdjustorThunk },
+	{ 0x0600003E, U3CStartU3Ed__6_MoveNext_m285C70891F06AD1C6AF600712A03FAE31E3AC221_AdjustorThunk },
+	{ 0x0600003F, U3CStartU3Ed__6_SetStateMachine_m9B8A98BD1E42AE2104B9F66E57C6FEC3A448747B_AdjustorThunk },
+};
+static const int32_t s_InvokerIndices[63] = 
+{
+	1264,
+	1264,
+	1264,
+	1264,
+	1264,
+	1264,
+	1264,
+	1076,
+	1264,
+	1264,
+	1264,
+	1264,
+	1264,
+	1264,
+	1076,
+	1264,
+	1264,
+	1264,
+	1076,
+	1264,
+	1264,
+	1264,
+	1264,
+	1264,
+	1076,
+	1264,
+	1264,
+	1264,
+	43,
+	1264,
+	1264,
+	1264,
+	1264,
+	1076,
+	1264,
+	1264,
+	1264,
+	1264,
+	1264,
+	1264,
+	1264,
+	1065,
+	1264,
+	2126,
+	1264,
+	1264,
+	1264,
+	1264,
+	1076,
+	1264,
+	1264,
+	1264,
+	1264,
+	2126,
+	1264,
+	1076,
+	1264,
+	1264,
+	1076,
+	1264,
+	2126,
+	1264,
+	1076,
+};
+extern const CustomAttributesCacheGenerator g_AssemblyU2DCSharp_AttributeGenerators[];
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
+const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
+{
+	"Assembly-CSharp.dll",
+	63,
+	s_methodPointers,
+	10,
+	s_adjustorThunks,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	g_AssemblyU2DCSharp_AttributeGenerators,
+	NULL, // module initializer,
+	NULL,
+	NULL,
+	NULL,
+};
