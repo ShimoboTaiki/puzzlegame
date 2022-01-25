@@ -11,7 +11,7 @@ namespace SelectStage
     {
         [SerializeField] private int buttonNumber;
         [SerializeField] private Text text;
-        public static int maxStageNum = 1;
+        public static int maxStageNum = 3;
         private bool isLocked;
         // Start is called before the first frame update
         void Start()

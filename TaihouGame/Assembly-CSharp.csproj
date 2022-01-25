@@ -63,7 +63,9 @@
     <Compile Include="Assets/Scripts/GameOver.cs" />
     <Compile Include="Assets/Scripts/StageSelectButton.cs" />
     <Compile Include="Assets/Scripts/Hassya.cs" />
+    <Compile Include="Assets/Scripts/FBlockManager.cs" />
     <Compile Include="Assets/Scripts/StartButton.cs" />
+    <Compile Include="Assets/Scripts/ItemUse.cs" />
     <Compile Include="Assets/Scripts/Drag.cs" />
     <Compile Include="Assets/Scripts/BlockManager.cs" />
     <Compile Include="Assets/Scripts/Cannon.cs" />
@@ -74,7 +76,9 @@
     <Compile Include="Assets/Scripts/StageManager.cs" />
     <Compile Include="Assets/Scripts/BaneManager.cs" />
     <Compile Include="Assets/Scripts/Ball.cs" />
-    <Compile Include="Assets/Scripts/FBlockManager.cs" />
+    <Compile Include="Assets/Scripts/ItemCanvas.cs" />
+    <Compile Include="Assets/Scripts/ItemManager.cs" />
+    <Compile Include="Assets/Scripts/BigBaniButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

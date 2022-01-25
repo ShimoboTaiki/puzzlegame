@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 515651515}
+  board: {fileID: 1492202297}
 --- !u!4 &479521696
 Transform:
   m_ObjectHideFlags: 0
@@ -560,6 +561,7 @@ MonoBehaviour:
   boardSize: {x: 6, y: 5}
   adjestPos: {x: -2.5, y: -2}
   dropLenght: 100
+  moveTime: 0.1
 --- !u!1 &1492202296
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +573,7 @@ GameObject:
   - component: {fileID: 1492202298}
   - component: {fileID: 1492202297}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

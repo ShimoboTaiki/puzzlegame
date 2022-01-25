@@ -35,7 +35,7 @@ namespace SM
                 i = 2;
                 CreateStage();
                 ballCount = 15;
-                enemyList[i - 1].Add(new Vector2(-3, 3));
+                enemyList[i - 1].Add(new Vector2(-5, 3));
                 enemyList[i - 1].Add(new Vector2(-2, -1));
                 enemyList[i - 1].Add(new Vector2(1, 3));
                 enemyList[i - 1].Add(new Vector2(2, 3));
@@ -43,8 +43,23 @@ namespace SM
                 blockInform[i - 1].Add(new Vector4(1, 2,1,1));
                 blockInform[i - 1].Add(new Vector4(2, 2,1,1));
                 blockInform[i - 1].Add(new Vector4(0, 3,1,1));
+                FBlockInform[i - 1].Add(new Vector4(-6, 2, 6, 1));
+                FBlockInform[i - 1].Add(new Vector4(-3, 3, 1, 3));
                 baneInform[i - 1].Add(new Vector3(0, -2, 3));
                 stages.Add(new Stage(ballCount, enemyList[i - 1], blockInform[i - 1],FBlockInform[i-1], baneInform[i - 1]));
+
+                //Stage3
+                i = 3;
+                CreateStage();
+                ballCount = 10;
+                enemyList[i - 1].Add(new Vector2(4, 4));
+                enemyList[i - 1].Add(new Vector2(-1.5f, 2));
+                blockInform[i - 1].Add(new Vector4(3, 2, 1, 1));
+                blockInform[i - 1].Add(new Vector4(4, 2, 1, 1));
+                blockInform[i - 1].Add(new Vector4(5, 2, 1, 1));
+                FBlockInform[i - 1].Add(new Vector4(2, 5, 1, 7));
+                baneInform[i - 1].Add(new Vector3(5, -1, 2));
+                stages.Add(new Stage(ballCount, enemyList[i - 1], blockInform[i - 1], FBlockInform[i - 1], baneInform[i - 1]));
 
                 isdifined = true;
             }
