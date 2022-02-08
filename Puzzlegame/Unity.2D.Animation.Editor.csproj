@@ -56,6 +56,7 @@
     <Analyzer Include="/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/WeightPainterTool.cs" />
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/VisibilityTool/BoneTreeViewModel.cs" />
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/SpriteMeshData/EditableBoneWeight.cs" />
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/DefaultPoseScope.cs" />
@@ -73,8 +74,8 @@
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/SkeletonTool/SkeletonToolWrapper.cs" />
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SpriteSkin/BoneGizmo.cs" />
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/ModuleUtility.cs" />
-    <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/Triangulation/ITriangulator.cs" />
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/VisibilityTool/VisibilityTool.cs" />
+    <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/Triangulation/ITriangulator.cs" />
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/SkinningCache/MeshPreviewCache.cs" />
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SpriteLib/SpriteLibraryDataProvider.cs" />
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/IMGUI/RectSlider.cs" />
@@ -210,7 +211,6 @@
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/Selectors/IRectSelector.cs" />
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/SpriteBoneInfluence/SpriteBoneInfluenceListWidget.cs" />
     <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/SkinningSerializer/SkinningSerializerJSON.cs" />
-    <Compile Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/SkinningModule/WeightPainterTool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library/PackageCache/com.unity.2d.animation@5.0.6/Editor/Assets/SkinningModule/MeshToolbar.uxml" />

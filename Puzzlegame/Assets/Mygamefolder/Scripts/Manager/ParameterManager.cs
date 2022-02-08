@@ -10,6 +10,7 @@ namespace Manager
         public Vector2 adjestPos = new Vector2(-2.5f, 2);
         public float dropLenght = 100;
         [Header("ドロップが動くのにかかる時間"),Range(0.1f,1)] public float moveTime = 0.5f;
+        [Header("ドロップが消える個数")] public int destroyDropCount=3;
 
         public Vector2Int GetDropPosition(Vector2 mousePos)
         {

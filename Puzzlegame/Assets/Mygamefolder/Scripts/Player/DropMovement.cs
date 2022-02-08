@@ -4,6 +4,7 @@ using UnityEngine;
 using Manager;
 using UnityEngine.UI;
 using UniRx;
+using Puzzle;
 namespace Player
 {
     public class DropMovement : MonoBehaviour
@@ -28,6 +29,39 @@ namespace Player
         {
             Vector2 mousePos = Input.mousePosition;
             text.text = ParameterManager.Instance.GetDropPosition(mousePos) + System.Environment.NewLine + Input.mousePosition;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                List<Combo> combos = new List<Combo>();
+                for(int i = 0; i< ParameterManager.Instance.boardSize.x;i++)
+                {
+                    for(int j=0; j < ParameterManager.Instance.boardSize.y; j++)
+                    {
+                        Combo combo = new Combo();
+                        try
+                        {
+                            combo = board.SearchCombo(new Vector2Int(i, j));
+                        }
+                        catch(System.ArgumentOutOfRangeException e)
+                        {
+                            Debug.Log("エラー");
+                        }
+                        if (combo.comboDrop.Count!=0)
+                        {
+                            combos.Add(combo);
+                        }
+                        //combos.Add(board.SearchCombo(new Vector2Int(i, j)))
+                    }
+                }
+                Debug.Log(combos.Count);
+                foreach(Combo c in combos)
+                {
+                    foreach(Drop d in c.comboDrop)
+                    {
+                        //d.ChangeColor(Color.black);
+                        d.dropObject.SetActive(false);
+                    }
+                }
+            }
         }
     }
 }

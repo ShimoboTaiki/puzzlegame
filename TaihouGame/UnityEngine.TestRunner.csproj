@@ -163,8 +163,8 @@
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEngine.TestRunner/TestRunner/RemoteHelpers/PlayerConnectionMessageIds.cs" />
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs" />
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEngine.TestRunner/Utils/AssemblyProvider/AssemblyLoadProxy.cs" />
-    <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEngine.TestRunner/Assertions/UnityTestTimeoutException.cs" />
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEngine.TestRunner/Utils/PrebuildSceneSetupAttribute.cs" />
+    <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEngine.TestRunner/Assertions/UnityTestTimeoutException.cs" />
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEngine.TestRunner/NUnitExtensions/Runner/DefaultTestWorkItem.cs" />
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEngine.TestRunner/Utils/FloatEqualityComparer.cs" />
   </ItemGroup>

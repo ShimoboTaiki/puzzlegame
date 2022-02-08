@@ -9,14 +9,16 @@ public class Stage : MonoBehaviour
     public List<Vector4> blockInform = new List<Vector4>();
     public List<Vector4> FBlockInform = new List<Vector4>();
     public List<Vector3> baneInform = new List<Vector3>();
+    public List<Vector3> baniHoleInform = new List<Vector3>();
 
 
-    public Stage(int ballCount,List<Vector2> enemyList,List<Vector4> blockInform,List<Vector4> FBlockInform,List<Vector3> baneInform)
+    public Stage(int ballCount,List<Vector2> enemyList,List<Vector4> blockInform,List<Vector4> FBlockInform,List<Vector3> baneInform,List<Vector3>baniHoleInform)
     {
         this.ballCount = ballCount;
         this.enemyList = enemyList;
         this.blockInform = blockInform;
         this.FBlockInform = FBlockInform;
         this.baneInform = baneInform;
+        this.baniHoleInform = baniHoleInform;
     }
 }

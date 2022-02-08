@@ -30,19 +30,35 @@ public class Hassya : MonoBehaviour
             float ballPosX = cannon.transform.position.x;
             float ballPosY = cannon.transform.position.y;
             ballClone = Instantiate(ball, new Vector3(ballPosX, ballPosY, 0), Quaternion.identity);
+            Rigidbody2D rig = ballClone.GetComponent<Rigidbody2D>();
+            CircleCollider2D col = ballClone.GetComponent<CircleCollider2D>();
             if (ItemManager.isUsedBigBaniCounter>0)
             {
                 ballClone.transform.localScale = ball.transform.localScale * 2;
                 ItemManager.isUsedBigBaniCounter--;
             }
-            Rigidbody2D rig = ballClone.GetComponent<Rigidbody2D>();
+            if (ItemManager.isUsedZeroGravityCounter > 0)
+            {
+                rig.gravityScale = 0;
+                ItemManager.isUsedZeroGravityCounter--;
+            }
+            else
+            {
+                rig.gravityScale = 1;
+            }
+            if (ItemManager.isUsedPenetrationCounter > 0)
+            {
+                col.isTrigger = true;
+                ItemManager.isUsedPenetrationCounter--;
+            }
+            else
+            {
+                col.isTrigger = false;
+            }
             ballThrowRot = cannon.transform.rotation.eulerAngles;
-            rig.gravityScale = 1;
-            speed = Cannon.speed * 1.3f;
+            speed = Mathf.Sqrt(Cannon.speed * 15);
             float forceX = speed * Mathf.Cos(ballThrowRot.z * Mathf.PI / 180);
             float forceY = speed * Mathf.Sin(ballThrowRot.z * Mathf.PI / 180);
-            forceX = Mathf.Sqrt(forceX)*3;
-            forceY = Mathf.Sqrt(forceY)*3;
             rig.velocity=new Vector2(forceX,forceY);
             BallCountManager.ballCount--;
         }

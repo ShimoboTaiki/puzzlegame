@@ -155,8 +155,8 @@
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/CommandLineTest/LogWriter.cs" />
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/TestRun/Tasks/CleanupVerificationTask.cs" />
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/TestRunnerWindow.cs" />
-    <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/TestRun/Tasks/SaveUndoIndexTask.cs" />
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/UnityTestProtocol/TestFinishedMessage.cs" />
+    <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/TestRun/Tasks/SaveUndoIndexTask.cs" />
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/NUnitExtension/Attributes/TestPlayerBuildModifierAttribute.cs" />
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/TestRunner/Utils/ITestListProvider.cs" />
     <Compile Include="Library/PackageCache/com.unity.test-framework@1.1.27/UnityEditor.TestRunner/UnityTestProtocol/UnityTestProtocolStarter.cs" />

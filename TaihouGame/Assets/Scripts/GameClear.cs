@@ -14,6 +14,7 @@ public class GameClear : MonoBehaviour
         text.text = "Stage" + StageManager.stageNum + "クリア!!";
         if (StageManager.stageNum == GoStageButton.maxStageNum)
         {
+
             GoStageButton.maxStageNum++;
         }
     }

@@ -7,6 +7,7 @@ TagManager:
   - ball
   - block
   - Bane
+  - baniHole
   layers:
   - Default
   - TransparentFX

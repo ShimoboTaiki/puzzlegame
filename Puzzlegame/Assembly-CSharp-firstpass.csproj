@@ -737,6 +737,10 @@
       <Project>{5C0DDFAC-CE9D-4C2F-DAB1-7637E4A5D7A0}</Project>
       <Name>Unity.Mathematics</Name>
     </ProjectReference>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{3707842A-CE5F-F9C1-7B3F-BA31514F74F6}</Project>
+      <Name>UniRx</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.IK.Runtime.csproj">
       <Project>{6851258F-0DF2-6B10-93B1-DC7E86AF38BF}</Project>
       <Name>Unity.2D.IK.Runtime</Name>
@@ -788,10 +792,6 @@
     <ProjectReference Include="Unity.2D.SpriteShape.Runtime.csproj">
       <Project>{9751AEF8-DD72-3AEA-805C-878B78DED142}</Project>
       <Name>Unity.2D.SpriteShape.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="UniRx.csproj">
-      <Project>{3707842A-CE5F-F9C1-7B3F-BA31514F74F6}</Project>
-      <Name>UniRx</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

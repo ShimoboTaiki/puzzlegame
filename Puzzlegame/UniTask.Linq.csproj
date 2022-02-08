@@ -65,8 +65,8 @@
     <Compile Include="Assets/Plugins/UniTask/Runtime/Linq/Do.cs" />
     <Compile Include="Assets/Plugins/UniTask/Runtime/Linq/ToLookup.cs" />
     <Compile Include="Assets/Plugins/UniTask/Runtime/Linq/Single.cs" />
-    <Compile Include="Assets/Plugins/UniTask/Runtime/Linq/SkipLast.cs" />
     <Compile Include="Assets/Plugins/UniTask/Runtime/Linq/Empty.cs" />
+    <Compile Include="Assets/Plugins/UniTask/Runtime/Linq/SkipLast.cs" />
     <Compile Include="Assets/Plugins/UniTask/Runtime/Linq/ToArray.cs" />
     <Compile Include="Assets/Plugins/UniTask/Runtime/Linq/Average.cs" />
     <Compile Include="Assets/Plugins/UniTask/Runtime/Linq/TakeWhile.cs" />

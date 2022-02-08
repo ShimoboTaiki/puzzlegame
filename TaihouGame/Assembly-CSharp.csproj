@@ -62,23 +62,28 @@
     <Compile Include="Assets/Scripts/GoStageButton.cs" />
     <Compile Include="Assets/Scripts/GameOver.cs" />
     <Compile Include="Assets/Scripts/StageSelectButton.cs" />
+    <Compile Include="Assets/Scripts/ZeroGravity.cs" />
     <Compile Include="Assets/Scripts/Hassya.cs" />
+    <Compile Include="Assets/Scripts/ItemCanvas.cs" />
     <Compile Include="Assets/Scripts/FBlockManager.cs" />
     <Compile Include="Assets/Scripts/StartButton.cs" />
     <Compile Include="Assets/Scripts/ItemUse.cs" />
     <Compile Include="Assets/Scripts/Drag.cs" />
     <Compile Include="Assets/Scripts/BlockManager.cs" />
+    <Compile Include="Assets/Scripts/Penetration.cs" />
     <Compile Include="Assets/Scripts/Cannon.cs" />
+    <Compile Include="Assets/Scripts/ItemManager.cs" />
     <Compile Include="Assets/Scripts/BallCountManager.cs" />
     <Compile Include="Assets/Scripts/Stage.cs" />
     <Compile Include="Assets/Scripts/Enemy.cs" />
+    <Compile Include="Assets/Scripts/BigBaniButton.cs" />
     <Compile Include="Assets/Scripts/GameClear.cs" />
     <Compile Include="Assets/Scripts/StageManager.cs" />
+    <Compile Include="Assets/Scripts/baniHoleManager.cs" />
     <Compile Include="Assets/Scripts/BaneManager.cs" />
     <Compile Include="Assets/Scripts/Ball.cs" />
-    <Compile Include="Assets/Scripts/ItemCanvas.cs" />
-    <Compile Include="Assets/Scripts/ItemManager.cs" />
-    <Compile Include="Assets/Scripts/BigBaniButton.cs" />
+    <Compile Include="Assets/Scripts/DataSave.cs" />
+    <Compile Include="Assets/Scripts/DestroyData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -38,22 +38,101 @@ namespace Puzzle
             }
         }
 
-        public void ChangeDrop(Vector2Int dropPosA ,Vector2Int dropPosB)
+        public void ChangeDrop(Vector2Int dropPosA, Vector2Int dropPosB)
         {
+            if ((!ParameterManager.Instance.InBoard(dropPosA)) || (!ParameterManager.Instance.InBoard(dropPosB)))
+            {
+                Debug.LogWarning("画面外が指定されました。");
+                return;
+            }
             Vector2 canvasPosA = ParameterManager.Instance.GetDropCanvasPosition(dropPosA);
             Vector2 canvasPosB = ParameterManager.Instance.GetDropCanvasPosition(dropPosB);
-            try
-            {
-                dropList[dropPosA.x][dropPosA.y].Move(canvasPosB);
-                dropList[dropPosB.x][dropPosB.y].Move(canvasPosA);
-            }
-            catch (System.ArgumentOutOfRangeException e)
-            {
-                Debug.Log((dropPosA, dropPosB));
-            }
+
+            dropList[dropPosA.x][dropPosA.y].Move(canvasPosB);
+            dropList[dropPosB.x][dropPosB.y].Move(canvasPosA);
             Drop temp = dropList[dropPosA.x][dropPosA.y];
             dropList[dropPosA.x][dropPosA.y] = dropList[dropPosB.x][dropPosB.y];
             dropList[dropPosB.x][dropPosB.y] = temp;
+        }
+
+        public Combo SearchCombo(Vector2Int pos)
+        {
+            Combo combo = new Combo();
+            Vector2Int searchPos;
+            searchPos = pos;
+            combo.type = dropList[pos.x][pos.y].type;
+            int deleteCount = ParameterManager.Instance.destroyDropCount;
+            if (pos.x < ParameterManager.Instance.boardSize.x+2 - deleteCount)
+            {
+
+                while (dropList[searchPos.x][searchPos.y].type
+                    == dropList[pos.x][pos.y].type)
+                {
+                    if (!ParameterManager.Instance.InBoard(searchPos + 1 * Vector2Int.right))
+                    {
+                        break;
+                    }
+                    searchPos.x++;
+
+                }
+            }
+            if (pos.x ==3)
+            {
+                Debug.Log("");
+            }
+            if (searchPos.x - pos.x > ParameterManager.Instance.destroyDropCount - 1)
+            {
+                
+                for (int i = 0; i < searchPos.x - pos.x ; i++)
+                {
+                    combo.comboDrop.Add(dropList[i + pos.x][pos.y]);
+
+                }
+            }
+            else
+            {
+                Vector2Int hoge = searchPos;
+                hoge = pos;
+                Debug.Log("加算されませんでした");
+            }
+
+            searchPos = pos;
+            if (pos.y < ParameterManager.Instance.boardSize.y+2 - deleteCount)
+            {
+                while (dropList[searchPos.x][searchPos.y].type
+                    == dropList[pos.x][pos.y].type)
+                {
+                    if (!ParameterManager.Instance.InBoard(searchPos + 1 * Vector2Int.up))
+                    {
+                        break;
+                    }
+                    searchPos.y++;
+
+                }
+
+            }
+            if (searchPos.y - pos.y > ParameterManager.Instance.destroyDropCount - 1)
+            {
+                for (int i = 0; i < searchPos.y - pos.y ; i++)
+                {
+                    combo.comboDrop.Add(dropList[pos.x][i + pos.y]);
+                }
+            }
+            else
+            {
+                Vector2Int hoge = searchPos;
+                hoge = pos;
+                Debug.Log("加算されませんでした");
+            }
+            //if (combo.comboDrop.Count == 0)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    return combo;
+            //}
+            return combo;
         }
     }
 }

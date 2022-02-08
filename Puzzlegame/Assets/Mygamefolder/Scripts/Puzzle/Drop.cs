@@ -26,5 +26,10 @@ namespace Puzzle
         {
             dropObject.transform.DOLocalMove(pos, ParameterManager.Instance.moveTime).SetEase(Ease.Linear);
         }
+        public void ChangeColor(Color color)
+        {
+            image.color = color;
+            
+        }
     }
 }
