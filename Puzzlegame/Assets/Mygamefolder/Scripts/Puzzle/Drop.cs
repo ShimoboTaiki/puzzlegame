@@ -8,7 +8,7 @@ namespace Puzzle
 {
     public class Drop
     {
-        public Vector2 pos;
+        public Vector2Int pos;
         public Type type;
         public GameObject dropObject;
         private Image image;
@@ -31,5 +31,11 @@ namespace Puzzle
             image.color = color;
             
         }
+
+        public void Delete()
+        {
+            Object.Destroy(this.dropObject);
+        }
+        
     }
 }

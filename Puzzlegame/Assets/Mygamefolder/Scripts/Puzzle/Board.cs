@@ -55,6 +55,27 @@ namespace Puzzle
             dropList[dropPosB.x][dropPosB.y] = temp;
         }
 
+        public void PuzzleProcess()
+        {
+            List<Combo> combos = new List<Combo>();
+            for(int i = 0; i< ParameterManager.Instance.boardSize.x;i++)
+            {
+                for(int j=0; j < ParameterManager.Instance.boardSize.y; j++)
+                {
+                    Combo combo = new Combo();
+                    combo = this.SearchCombo(new Vector2Int(i, j));
+                    
+                    if (combo.comboDrops.Count!=0)
+                    {
+                        combos.Add(combo);
+                    }
+                    //combos.Add(board.SearchCombo(new Vector2Int(i, j)))
+                }
+            }
+            Debug.Log(combos.Count);
+            DeleteDrop(combos);
+        }
+
         public Combo SearchCombo(Vector2Int pos)
         {
             Combo combo = new Combo();
@@ -85,7 +106,7 @@ namespace Puzzle
                 
                 for (int i = 0; i < searchPos.x - pos.x+1 ; i++)
                 {
-                    combo.comboDrop.Add(dropList[i + pos.x][pos.y]);
+                    combo.comboDrops.Add(dropList[i + pos.x][pos.y]);
 
                 }
             }
@@ -115,7 +136,7 @@ namespace Puzzle
             {
                 for (int i = 0; i < searchPos.y - pos.y+1 ; i++)
                 {
-                    combo.comboDrop.Add(dropList[pos.x][i + pos.y]);
+                    combo.comboDrops.Add(dropList[pos.x][i + pos.y]);
                 }
             }
             else
@@ -134,5 +155,24 @@ namespace Puzzle
             //}
             return combo;
         }
+
+        private void DeleteDrop(List<Combo> combos)
+        {
+            foreach (Combo combo in combos)
+            {
+                foreach (Drop drop in combo.comboDrops)
+                {
+                    this.dropList[drop.pos.x][drop.pos.y] = null;
+                    drop.Delete();
+                }
+            }
+        }
+//TODO:ドロップの落ちる処理を実装する
+        private void FallDrop()
+        {
+            
+        }
+
+        
     }
 }

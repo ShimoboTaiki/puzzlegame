@@ -7,10 +7,10 @@ namespace Puzzle
     public class Combo : MonoBehaviour
     {
         public Type type;
-        public List<Drop> comboDrop;
+        public List<Drop> comboDrops;
         public Combo()
         {
-            comboDrop = new List<Drop>();
+            comboDrops = new List<Drop>();
         }
     }
 }

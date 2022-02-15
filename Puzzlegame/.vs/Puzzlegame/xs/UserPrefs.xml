@@ -1,15 +1,15 @@
 ﻿<Properties StartupConfiguration="{6DC0D40A-9723-6727-A5AF-2C5BE0A2CE06}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Mygamefolder/Scripts/Puzzle/Board.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Mygamefolder/Scripts/Player/DropMovement.cs">
     <Files>
       <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Type.cs" Line="1" Column="1" />
       <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Combo.cs" />
       <File FileName="Assets/Mygamefolder/Scripts/Puzzle/DestroyDrop.cs" />
       <File FileName="Assets/Mygamefolder/Scripts/Manager/ParameterManager.cs" />
       <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Drop.cs" />
-      <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Board.cs" Line="114" Column="39" />
+      <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Board.cs" Line="60" Column="1" />
       <File FileName="Assets/Mygamefolder/Scripts/SingletonMonoBehaviour.cs" />
       <File FileName="Assets/Mygamefolder/Scripts/Manager/ColorManager.cs" />
-      <File FileName="Assets/Mygamefolder/Scripts/Player/DropMovement.cs" />
+      <File FileName="Assets/Mygamefolder/Scripts/Player/DropMovement.cs" Line="34" Column="39" />
       <File FileName="Assets/Mygamefolder/Scripts/Manager/DropInputManager.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -18,7 +18,7 @@
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="38cc70ef-f325-4ee6-95f6-5f45ab78fc71" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/Puzzlegame/Assets/Mygamefolder/Scripts/Puzzle/Board.cs" relfile="Assets/Mygamefolder/Scripts/Puzzle/Board.cs" line="81" column="1" />
+      <Breakpoint file="/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/Puzzlegame/Assets/Mygamefolder/Scripts/Puzzle/Board.cs" relfile="Assets/Mygamefolder/Scripts/Puzzle/Board.cs" line="86" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
