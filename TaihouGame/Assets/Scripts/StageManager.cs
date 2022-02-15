@@ -93,7 +93,7 @@ namespace SM
                 FBlockInform[i - 1].Add(new Vector4(2, 2, 7, 1));
                 FBlockInform[i - 1].Add(new Vector4(3, 4.1f, 9, 1));
                 FBlockInform[i - 1].Add(new Vector4(5, 1, 1, 1));
-                FBlockInform[i - 1].Add(new Vector4(7, 1, 1, 5.2f));
+                FBlockInform[i - 1].Add(new Vector4(7.01f, 1, 1, 5.2f));
                 FBlockInform[i - 1].Add(new Vector4(-1, -1, 1, 5));
                 baneInform[i - 1].Add(new Vector3(7, -3, 2));
                 stages.Add(new Stage(ballCount, enemyList[i - 1], blockInform[i - 1], FBlockInform[i - 1], baneInform[i - 1], baniHoleInform[i - 1]));

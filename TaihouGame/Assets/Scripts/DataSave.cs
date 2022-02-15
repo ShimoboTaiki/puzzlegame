@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SelectStage;
+using ExStage;
 
 public class DataSave : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class DataSave : MonoBehaviour
         {
             GoStageButton.maxStageNum = PlayerPrefs.GetInt("saveStageNum", 1);
             isLoaded = true;
+            if (GoStageButton.maxStageNum >= 10)
+            {
+                ExtraStage.canGoExtraStage = true;
+            }
+            else
+            {
+                ExtraStage.canGoExtraStage = false;
+            }
         }
     }
 

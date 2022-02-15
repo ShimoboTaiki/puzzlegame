@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{6DC0D40A-9723-6727-A5AF-2C5BE0A2CE06}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Mygamefolder/Scripts/Puzzle/Drop.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Mygamefolder/Scripts/Puzzle/Board.cs">
     <Files>
       <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Type.cs" Line="1" Column="1" />
       <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Combo.cs" />
       <File FileName="Assets/Mygamefolder/Scripts/Puzzle/DestroyDrop.cs" />
       <File FileName="Assets/Mygamefolder/Scripts/Manager/ParameterManager.cs" />
-      <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Drop.cs" Line="35" Column="2" />
-      <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Board.cs" />
+      <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Drop.cs" />
+      <File FileName="Assets/Mygamefolder/Scripts/Puzzle/Board.cs" Line="114" Column="39" />
       <File FileName="Assets/Mygamefolder/Scripts/SingletonMonoBehaviour.cs" />
       <File FileName="Assets/Mygamefolder/Scripts/Manager/ColorManager.cs" />
       <File FileName="Assets/Mygamefolder/Scripts/Player/DropMovement.cs" />
@@ -15,11 +15,10 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="70cf2929-5988-4754-be91-e55d84900c3c" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="38cc70ef-f325-4ee6-95f6-5f45ab78fc71" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/Puzzlegame/Assets/Mygamefolder/Scripts/Player/DropMovement.cs" relfile="Assets/Mygamefolder/Scripts/Player/DropMovement.cs" line="53" column="1" />
-      <Breakpoint file="/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/Puzzlegame/Assets/Mygamefolder/Scripts/Player/DropMovement.cs" relfile="Assets/Mygamefolder/Scripts/Player/DropMovement.cs" line="48" column="1" />
+      <Breakpoint file="/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/Puzzlegame/Assets/Mygamefolder/Scripts/Puzzle/Board.cs" relfile="Assets/Mygamefolder/Scripts/Puzzle/Board.cs" line="81" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

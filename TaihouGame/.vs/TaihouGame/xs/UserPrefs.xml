@@ -1,16 +1,17 @@
 ﻿<Properties StartupConfiguration="{BC359BB7-C022-42A4-3A1C-9CB21D3AC95C}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DestroyData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DataSave.cs">
     <Files>
-      <File FileName="Assets/Scripts/DestroyData.cs" Line="22" Column="39" />
-      <File FileName="Assets/Scripts/DataSave.cs" Line="8" Column="18" />
-      <File FileName="Assets/Scripts/StageManager.cs" />
-      <File FileName="Assets/Scripts/baniHoleManager.cs" />
+      <File FileName="Assets/Scripts/ExtraStage.cs" Line="15" Column="37" IsPinned="True" />
+      <File FileName="Assets/Scripts/DataSave.cs" Line="23" Column="52" />
+      <File FileName="Assets/Scripts/DestroyData.cs" />
+      <File FileName="Assets/Scripts/StageManager.cs" Line="96" Column="58" />
+      <File FileName="Assets/Scripts/baniHoleManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Ball.cs" />
       <File FileName="Assets/Scripts/ItemCanvas.cs" />
       <File FileName="Assets/Scripts/ZeroGravity.cs" />
       <File FileName="Assets/Scripts/BallCountManager.cs" />
       <File FileName="Assets/Scripts/ItemUse.cs" />
-      <File FileName="Assets/Scripts/GoStageButton.cs" Line="14" Column="39" />
+      <File FileName="Assets/Scripts/GoStageButton.cs" />
       <File FileName="Assets/Scripts/Stage.cs" />
       <File FileName="Assets/Scripts/StageSelectButton.cs" />
       <File FileName="Assets/Scripts/BlockManager.cs" />
@@ -26,14 +27,15 @@
       <File FileName="Assets/Scripts/StartButton.cs" />
       <File FileName="Assets/Scripts/GameOver.cs" />
       <File FileName="Assets/Scripts/FBlockManager.cs" />
-      <File FileName="Assets/Scripts/ItemManager.cs" />
-      <File FileName="Assets/Scripts/BigBaniButton.cs" />
-      <File FileName="Assets/Scripts/Penetration.cs" />
+      <File FileName="Assets/Scripts/ItemManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/BigBaniButton.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Penetration.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ExtraStageButton.cs" Line="29" Column="48" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="5fc609db-49c5-459e-b049-8762b5cb8382" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="aaa57cd2-2916-420e-b4f4-fb30ad77a0cd" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

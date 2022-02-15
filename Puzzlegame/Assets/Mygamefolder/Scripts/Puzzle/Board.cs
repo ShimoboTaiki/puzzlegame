@@ -62,13 +62,13 @@ namespace Puzzle
             searchPos = pos;
             combo.type = dropList[pos.x][pos.y].type;
             int deleteCount = ParameterManager.Instance.destroyDropCount;
-            if (pos.x < ParameterManager.Instance.boardSize.x+2 - deleteCount)
+            if (pos.x < ParameterManager.Instance.boardSize.x+1 - deleteCount)
             {
 
                 while (dropList[searchPos.x][searchPos.y].type
                     == dropList[pos.x][pos.y].type)
                 {
-                    if (!ParameterManager.Instance.InBoard(searchPos + 1 * Vector2Int.right))
+                    if ((!ParameterManager.Instance.InBoard(searchPos + 1 * Vector2Int.right)) || (dropList[searchPos.x+1][searchPos.y].type!=dropList[pos.x][pos.y].type))
                     {
                         break;
                     }
@@ -80,10 +80,10 @@ namespace Puzzle
             {
                 Debug.Log("");
             }
-            if (searchPos.x - pos.x > ParameterManager.Instance.destroyDropCount - 1)
+            if (searchPos.x - pos.x >= ParameterManager.Instance.destroyDropCount - 1)
             {
                 
-                for (int i = 0; i < searchPos.x - pos.x ; i++)
+                for (int i = 0; i < searchPos.x - pos.x+1 ; i++)
                 {
                     combo.comboDrop.Add(dropList[i + pos.x][pos.y]);
 
@@ -97,12 +97,12 @@ namespace Puzzle
             }
 
             searchPos = pos;
-            if (pos.y < ParameterManager.Instance.boardSize.y+2 - deleteCount)
+            if (pos.y < ParameterManager.Instance.boardSize.y+1 - deleteCount)
             {
                 while (dropList[searchPos.x][searchPos.y].type
                     == dropList[pos.x][pos.y].type)
                 {
-                    if (!ParameterManager.Instance.InBoard(searchPos + 1 * Vector2Int.up))
+                    if ((!ParameterManager.Instance.InBoard(searchPos + 1 * Vector2Int.up)) || (dropList[searchPos.x][searchPos.y+1].type!=dropList[pos.x][pos.y].type))
                     {
                         break;
                     }
@@ -111,9 +111,9 @@ namespace Puzzle
                 }
 
             }
-            if (searchPos.y - pos.y > ParameterManager.Instance.destroyDropCount - 1)
+            if (searchPos.y - pos.y >= ParameterManager.Instance.destroyDropCount - 1)
             {
-                for (int i = 0; i < searchPos.y - pos.y ; i++)
+                for (int i = 0; i < searchPos.y - pos.y+1 ; i++)
                 {
                     combo.comboDrop.Add(dropList[pos.x][i + pos.y]);
                 }

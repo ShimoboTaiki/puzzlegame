@@ -74,6 +74,8 @@
     <Compile Include="Assets/Scripts/Cannon.cs" />
     <Compile Include="Assets/Scripts/ItemManager.cs" />
     <Compile Include="Assets/Scripts/BallCountManager.cs" />
+    <Compile Include="Assets/Scripts/DataSave.cs" />
+    <Compile Include="Assets/Scripts/DestroyData.cs" />
     <Compile Include="Assets/Scripts/Stage.cs" />
     <Compile Include="Assets/Scripts/Enemy.cs" />
     <Compile Include="Assets/Scripts/BigBaniButton.cs" />
@@ -82,8 +84,8 @@
     <Compile Include="Assets/Scripts/baniHoleManager.cs" />
     <Compile Include="Assets/Scripts/BaneManager.cs" />
     <Compile Include="Assets/Scripts/Ball.cs" />
-    <Compile Include="Assets/Scripts/DataSave.cs" />
-    <Compile Include="Assets/Scripts/DestroyData.cs" />
+    <Compile Include="Assets/Scripts/ExtraStage.cs" />
+    <Compile Include="Assets/Scripts/ExtraStageButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
