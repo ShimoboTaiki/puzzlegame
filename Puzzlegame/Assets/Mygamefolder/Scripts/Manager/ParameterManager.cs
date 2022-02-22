@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Manager
 {
@@ -11,6 +12,7 @@ namespace Manager
         public float dropLenght = 100;
         [Header("ドロップが動くのにかかる時間"),Range(0.1f,1)] public float moveTime = 0.5f;
         [Header("ドロップが消える個数")] public int destroyDropCount=3;
+        [FormerlySerializedAs("prefab")] public GameObject dropPrefab;
 
         public Vector2Int GetDropPosition(Vector2 mousePos)
         {

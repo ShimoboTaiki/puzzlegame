@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 912239089}
   - component: {fileID: 912239088}
   - component: {fileID: 912239090}
+  - component: {fileID: 912239091}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -643,6 +644,19 @@ MonoBehaviour:
   dropLenght: 100
   moveTime: 0.1
   destroyDropCount: 3
+  dropPrefab: {fileID: 586377320842466490, guid: 8b8887560a3dc456ca6a5696a8490e74, type: 3}
+--- !u!114 &912239091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912239087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ea411277e52480a8c7dc7fae1456e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1492202296
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8dc8d2b4ae6b46bd9dc1d66f7ae3afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 586377320842466490, guid: 8b8887560a3dc456ca6a5696a8490e74, type: 3}
   canvasObject: {fileID: 554214819}
 --- !u!4 &1492202298
 Transform:

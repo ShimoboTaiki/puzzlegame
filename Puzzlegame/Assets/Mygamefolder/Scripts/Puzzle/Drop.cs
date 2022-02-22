@@ -1,9 +1,13 @@
+using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Manager;
 using DG.Tweening;
+
 namespace Puzzle
 {
     public class Drop
@@ -12,11 +16,12 @@ namespace Puzzle
         public Type type;
         public GameObject dropObject;
         private Image image;
-        public Drop(Vector2Int pos, Type type,GameObject prefab,GameObject canvasObject)
+        public Drop(Vector2Int pos, Type type,GameObject canvasObject)
         {
             this.pos=pos;
             this.type=type;
-            this.dropObject = UnityEngine.Object.Instantiate(prefab, canvasObject.transform);
+            this.dropObject = PoolingManager.Instance.PopPoolingObject(type);
+            this.dropObject.transform.parent = canvasObject.transform;
             image = dropObject.GetComponent<Image>();
             image.color = ColorManager.Instance.GetColor(this.type);
             dropObject.GetComponent<RectTransform>(). sizeDelta= Vector3.one * ParameterManager.Instance.dropLenght;
@@ -34,7 +39,16 @@ namespace Puzzle
 
         public void Delete()
         {
-            Object.Destroy(this.dropObject);
+            PoolingManager.Instance.GetPoolingObjectPutBack(this.type,this.dropObject);
+        }
+[RuntimeInitializeOnLoadMethod]
+        static void EntryPoolingObject()
+        {
+            Enum.GetValues(typeof(Puzzle.Type)).Cast<Puzzle.Type>().ToList().ForEach(type =>
+            {
+                GameObject prefab = ParameterManager.Instance.dropPrefab;
+                PoolingManager.Instance.AddPoolingObject(type,prefab,30);
+            });
         }
         
     }

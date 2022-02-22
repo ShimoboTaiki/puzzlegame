@@ -7,7 +7,6 @@ namespace Puzzle
 {
     public class Board : MonoBehaviour
     {
-        [SerializeField] GameObject prefab;
         List<List<Drop>> dropList = new List<List<Drop>>();
         public GameObject canvasObject;
         void Start()
@@ -19,7 +18,7 @@ namespace Puzzle
                 {
                     Vector2Int pos = new Vector2Int(i, j);
                     Type type = (Type)Random.Range(0, ColorManager.Instance.COLORMAXKIND);
-                    Drop drop = new Drop(pos, type,prefab,canvasObject);
+                    Drop drop = new Drop(pos, type,canvasObject);
                     dropList[i].Add(drop);
                 }
             }
