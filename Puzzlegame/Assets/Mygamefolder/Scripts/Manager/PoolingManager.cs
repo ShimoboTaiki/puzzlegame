@@ -42,6 +42,10 @@ namespace Manager
         /// <returns>poolのオブジェクト</returns>
         public GameObject PopPoolingObject(System.Object key)
         {
+            if (!_poolingStackMap.ContainsKey(key))
+            {
+                return null;
+            }
             if (_poolingStackMap[key].Count  <2)
             {
                 PoolingInsnited(key,_poolingStackMap[key].Peek());

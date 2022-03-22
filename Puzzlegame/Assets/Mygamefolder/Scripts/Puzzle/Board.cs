@@ -4,6 +4,11 @@ using UnityEngine;
 using Manager;
 using DG.Tweening;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
+using
+System;
+using Random = UnityEngine.Random;
+
 namespace Puzzle
 {
     public class Board : MonoBehaviour
@@ -11,7 +16,8 @@ namespace Puzzle
         List<List<Drop>> dropList = new List<List<Drop>>();
         public GameObject canvasObject;
         public Text debugText;
-        void Start()
+        
+        void Awake()
         {
             for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
             {
@@ -29,50 +35,52 @@ namespace Puzzle
 
         void Update()
         {
-
-            string boardText = "";
-            for (int j =ParameterManager.Instance.boardSize.y-1; j >=0  ; j--)
+            if (dropList.Count == ParameterManager.Instance.boardSize.x)
             {
-                for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+                string boardText = "";
+                for (int j =ParameterManager.Instance.boardSize.y-1; j >=0  ; j--)
                 {
-                    if (dropList[i][j] == null)
+                    for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
                     {
-                        boardText += "N";
-                    }
-                    else
-                    {
-                        if (dropList[i][j].deleteFlag)
+                        if (dropList[i][j] == null)
                         {
-                            boardText += "<color=white>";
+                            boardText += "N";
                         }
                         else
                         {
-                            boardText += "<color=black>";
-                        }
-                        switch (dropList[i][j].type)
-                        {
-                            case Type.blue:
-                                boardText += "B";
-                                break;
-                            case Type.green:
-                                boardText += "G";
-                                break;
-                            case Type.yellow:
-                                boardText += "Y";
-                                break;
-                            case Type.red:
-                                boardText += "R";
-                                break;
-                        }
+                            if (dropList[i][j].deleteFlag)
+                            {
+                                boardText += "<color=white>";
+                            }
+                            else
+                            {
+                                boardText += "<color=black>";
+                            }
+                            switch (dropList[i][j].type)
+                            {
+                                case Type.blue:
+                                    boardText += "B";
+                                    break;
+                                case Type.green:
+                                    boardText += "G";
+                                    break;
+                                case Type.yellow:
+                                    boardText += "Y";
+                                    break;
+                                case Type.red:
+                                    boardText += "R";
+                                    break;
+                            }
 
-                        boardText += "</color>";
+                            boardText += "</color>";
+                        }
                     }
+
+                    boardText += System.Environment.NewLine;
                 }
 
-                boardText += System.Environment.NewLine;
+                debugText.text = boardText;
             }
-
-            debugText.text = boardText;
         }
 
         void Viewing()
@@ -105,25 +113,20 @@ namespace Puzzle
             dropList[dropPosB.x][dropPosB.y] = temp;
         }
 
-        public void PuzzleProcess()
+        public async UniTaskVoid PuzzleProcess()
         {
-            List<Combo> combos = new List<Combo>();
             for(int i = 0; i< ParameterManager.Instance.boardSize.x;i++)
             {
                 for(int j=0; j < ParameterManager.Instance.boardSize.y; j++)
                 {
-                    Combo combo = new Combo();
-                    combo = this.SearchCombo(new Vector2Int(i, j));
-                    
-                    if (combo.comboDrops.Count!=0)
+                    if (this.SearchCombo(new Vector2Int(i, j)))
                     {
-                        combos.Add(combo);
+                        DeleteDrop();
+                        await UniTask.Delay(TimeSpan.FromSeconds(0.5));
                     }
-                    //combos.Add(board.SearchCombo(new Vector2Int(i, j)))
                 }
             }
-            Debug.Log(combos.Count);
-            DeleteDrop(combos);
+            
 
         }
 
@@ -147,24 +150,20 @@ namespace Puzzle
             }
         }
 
-        public Combo SearchCombo(Vector2Int pos)
+        public bool SearchCombo(Vector2Int pos)
         {
-            Combo combo = new Combo();
-            combo.type = dropList[pos.x][pos.y].type;
-            
-            dropList.ForEach(list=>list.ForEach(drop=>drop.deleteFlag=false));
-            List<Drop> horizontalDropList = GetComboDirection(pos, Vector2Int.right);
-            List<Drop> verticalDropList = GetComboDirection(pos, Vector2Int.up);
-            combo.comboDrops.UnionWith(horizontalDropList);
-            combo.comboDrops.UnionWith(verticalDropList);
-            if (combo.comboDrops.Count >= 3)
+            if (dropList[pos.x][pos.y].deleteFlag)
             {
-                int actionListCount = 0X7FEFFFFF;
+                return false;
             }
-            return combo;
+           // Type  type = dropList[pos.x][pos.y].type;
+           
+            bool rightFlag =GetComboDirection(pos, Vector2Int.right);
+            bool upFlag =GetComboDirection(pos, Vector2Int.up);
+            return rightFlag || upFlag;
         }
 
-        public List<Drop> GetComboDirection(Vector2Int pos, Vector2Int searchVec)
+        public bool GetComboDirection(Vector2Int pos, Vector2Int searchVec)
         {
             Type type = dropList[pos.x][pos.y].type;
             List<Drop> returnList=new List<Drop>();
@@ -182,30 +181,13 @@ namespace Puzzle
                 }
             }
 
-            if (!(returnList.Count >= ParameterManager.Instance.destroyDropCount))
-            {
-                returnList.Clear();
-            }
-            else
-            {
 
-                returnList.ForEach(drop =>  drop.deleteFlag = true);
-            }
 
-            return returnList;
+            return returnList.Count >= ParameterManager.Instance.destroyDropCount;
 
         }
-        private void DeleteDrop(List<Combo> combos)
+        private void DeleteDrop()
         {
-            // foreach (Combo combo in combos)
-            // {
-            //     foreach (Drop drop in combo.comboDrops)
-            //     {
-            //         this.dropList[drop.pos.x][drop.pos.y] = null;
-            //         Debug.Log(drop.pos);
-            //         drop.Delete();
-            //     }
-            // }
             for (int i = 0; i < ParameterManager.Instance.boardSize.x;i++)
             {
                 for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
@@ -216,6 +198,8 @@ namespace Puzzle
                     }
                 }
             }
+
+            int a = 1;
         }
 //TODO:ドロップの落ちる処理を実装する
         private void FallDrop()

@@ -23,11 +23,14 @@ namespace Puzzle
             this.pos=pos;
             this.type=type;
             this.dropObject = PoolingManager.Instance.PopPoolingObject(type);
-            this.dropObject.transform.parent = canvasObject.transform;
-            image = dropObject.GetComponent<Image>();
-            image.color = ColorManager.Instance.GetColor(this.type);
-            dropObject.GetComponent<RectTransform>(). sizeDelta= Vector3.one * ParameterManager.Instance.dropLenght;
-            dropObject.transform.localPosition = ParameterManager.Instance.GetDropCanvasPosition(pos);
+            if (this.dropObject)
+            {
+                this.dropObject.transform.parent = canvasObject.transform;
+                image = dropObject.GetComponent<Image>();
+                image.color = ColorManager.Instance.GetColor(this.type);
+                dropObject.GetComponent<RectTransform>(). sizeDelta= Vector3.one * ParameterManager.Instance.dropLenght;
+                dropObject.transform.localPosition = ParameterManager.Instance.GetDropCanvasPosition(pos);
+            }
         }
 
         public void IndexMove(Vector2Int indexPos)
@@ -54,7 +57,7 @@ namespace Puzzle
         {
             
         }
-[RuntimeInitializeOnLoadMethod]
+[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void EntryPoolingObject()
         {
             Enum.GetValues(typeof(Puzzle.Type)).Cast<Puzzle.Type>().ToList().ForEach(type =>
