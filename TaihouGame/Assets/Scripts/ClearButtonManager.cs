@@ -19,8 +19,15 @@ public class ClearButtonManager : MonoBehaviour
     }
     public void OnClickedNext()
     {
-        StageManager.stageNum++;
-        SceneManager.LoadScene("Stage");
+        if (StageManager.stageNum == 10)
+        {
+            SceneManager.LoadScene("Title");
+        }
+        else
+        {
+            StageManager.stageNum++;
+            SceneManager.LoadScene("Stage");
+        }
     }
     public void OnClickedBackTitle()
     {

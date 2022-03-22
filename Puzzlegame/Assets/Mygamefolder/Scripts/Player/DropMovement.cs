@@ -33,6 +33,16 @@ namespace Player
             {
                 board.PuzzleProcess();
             }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                board.Otosu();
+            }
+
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                board.OtosuMitame();
+            }
         }
     }
 }

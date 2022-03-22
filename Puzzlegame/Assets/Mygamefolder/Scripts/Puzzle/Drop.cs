@@ -16,8 +16,10 @@ namespace Puzzle
         public Type type;
         public GameObject dropObject;
         private Image image;
+        public bool deleteFlag ;
         public Drop(Vector2Int pos, Type type,GameObject canvasObject)
         {
+            this.deleteFlag = false;
             this.pos=pos;
             this.type=type;
             this.dropObject = PoolingManager.Instance.PopPoolingObject(type);
@@ -26,6 +28,11 @@ namespace Puzzle
             image.color = ColorManager.Instance.GetColor(this.type);
             dropObject.GetComponent<RectTransform>(). sizeDelta= Vector3.one * ParameterManager.Instance.dropLenght;
             dropObject.transform.localPosition = ParameterManager.Instance.GetDropCanvasPosition(pos);
+        }
+
+        public void IndexMove(Vector2Int indexPos)
+        {
+            Move(ParameterManager.Instance.GetDropCanvasPosition(indexPos));
         }
         public void Move(Vector2 pos)
         {
@@ -39,7 +46,13 @@ namespace Puzzle
 
         public void Delete()
         {
+            this.dropObject.SetActive(false);
             PoolingManager.Instance.GetPoolingObjectPutBack(this.type,this.dropObject);
+        }
+
+        public void ViewPos()
+        {
+            
         }
 [RuntimeInitializeOnLoadMethod]
         static void EntryPoolingObject()

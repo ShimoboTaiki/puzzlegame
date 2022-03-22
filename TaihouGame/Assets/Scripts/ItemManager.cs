@@ -9,10 +9,11 @@ namespace IM
         public static int isUsedBigBaniCounter;
         public static int isUsedZeroGravityCounter;
         public static int isUsedPenetrationCounter;
-        public static int bigBaniCount=3;
-        public static int zeroGravityCount=3;
-        public static int penetrationCount=3;
+        public static int bigBaniCount;
+        public static int zeroGravityCount;
+        public static int penetrationCount;
 
-        
+
+
     }
 }

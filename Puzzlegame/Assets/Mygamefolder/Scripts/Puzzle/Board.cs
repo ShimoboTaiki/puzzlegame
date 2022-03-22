@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Manager;
 using DG.Tweening;
+using UnityEngine.UI;
 namespace Puzzle
 {
     public class Board : MonoBehaviour
     {
         List<List<Drop>> dropList = new List<List<Drop>>();
         public GameObject canvasObject;
+        public Text debugText;
         void Start()
         {
             for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
@@ -24,6 +26,55 @@ namespace Puzzle
             }
             Viewing();
         }
+
+        void Update()
+        {
+
+            string boardText = "";
+            for (int j =ParameterManager.Instance.boardSize.y-1; j >=0  ; j--)
+            {
+                for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+                {
+                    if (dropList[i][j] == null)
+                    {
+                        boardText += "N";
+                    }
+                    else
+                    {
+                        if (dropList[i][j].deleteFlag)
+                        {
+                            boardText += "<color=white>";
+                        }
+                        else
+                        {
+                            boardText += "<color=black>";
+                        }
+                        switch (dropList[i][j].type)
+                        {
+                            case Type.blue:
+                                boardText += "B";
+                                break;
+                            case Type.green:
+                                boardText += "G";
+                                break;
+                            case Type.yellow:
+                                boardText += "Y";
+                                break;
+                            case Type.red:
+                                boardText += "R";
+                                break;
+                        }
+
+                        boardText += "</color>";
+                    }
+                }
+
+                boardText += System.Environment.NewLine;
+            }
+
+            debugText.text = boardText;
+        }
+
         void Viewing()
         {
             foreach(var drops in dropList)
@@ -73,103 +124,141 @@ namespace Puzzle
             }
             Debug.Log(combos.Count);
             DeleteDrop(combos);
+
+        }
+
+        public void Otosu()
+        {
+            FallDrop();
+            
+        }
+
+        public void OtosuMitame()
+        {
+            for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+            {
+                for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
+                {
+                    if (dropList[i][j] != null)
+                    {
+                        dropList[i][j].IndexMove(new Vector2Int(i,j));
+                    }
+                }
+            }
         }
 
         public Combo SearchCombo(Vector2Int pos)
         {
             Combo combo = new Combo();
-            Vector2Int searchPos;
-            searchPos = pos;
             combo.type = dropList[pos.x][pos.y].type;
-            int deleteCount = ParameterManager.Instance.destroyDropCount;
-            if (pos.x < ParameterManager.Instance.boardSize.x+1 - deleteCount)
+            
+            dropList.ForEach(list=>list.ForEach(drop=>drop.deleteFlag=false));
+            List<Drop> horizontalDropList = GetComboDirection(pos, Vector2Int.right);
+            List<Drop> verticalDropList = GetComboDirection(pos, Vector2Int.up);
+            combo.comboDrops.UnionWith(horizontalDropList);
+            combo.comboDrops.UnionWith(verticalDropList);
+            if (combo.comboDrops.Count >= 3)
             {
-
-                while (dropList[searchPos.x][searchPos.y].type
-                    == dropList[pos.x][pos.y].type)
-                {
-                    if ((!ParameterManager.Instance.InBoard(searchPos + 1 * Vector2Int.right)) || (dropList[searchPos.x+1][searchPos.y].type!=dropList[pos.x][pos.y].type))
-                    {
-                        break;
-                    }
-                    searchPos.x++;
-
-                }
+                int actionListCount = 0X7FEFFFFF;
             }
-            if (pos.x ==3)
-            {
-                Debug.Log("");
-            }
-            if (searchPos.x - pos.x >= ParameterManager.Instance.destroyDropCount - 1)
-            {
-                
-                for (int i = 0; i < searchPos.x - pos.x+1 ; i++)
-                {
-                    combo.comboDrops.Add(dropList[i + pos.x][pos.y]);
-
-                }
-            }
-            else
-            {
-                Vector2Int hoge = searchPos;
-                hoge = pos;
-                Debug.Log("加算されませんでした");
-            }
-
-            searchPos = pos;
-            if (pos.y < ParameterManager.Instance.boardSize.y+1 - deleteCount)
-            {
-                while (dropList[searchPos.x][searchPos.y].type
-                    == dropList[pos.x][pos.y].type)
-                {
-                    if ((!ParameterManager.Instance.InBoard(searchPos + 1 * Vector2Int.up)) || (dropList[searchPos.x][searchPos.y+1].type!=dropList[pos.x][pos.y].type))
-                    {
-                        break;
-                    }
-                    searchPos.y++;
-
-                }
-
-            }
-            if (searchPos.y - pos.y >= ParameterManager.Instance.destroyDropCount - 1)
-            {
-                for (int i = 0; i < searchPos.y - pos.y+1 ; i++)
-                {
-                    combo.comboDrops.Add(dropList[pos.x][i + pos.y]);
-                }
-            }
-            else
-            {
-                Vector2Int hoge = searchPos;
-                hoge = pos;
-                Debug.Log("加算されませんでした");
-            }
-            //if (combo.comboDrop.Count == 0)
-            //{
-            //    return;
-            //}
-            //else
-            //{
-            //    return combo;
-            //}
             return combo;
         }
 
+        public List<Drop> GetComboDirection(Vector2Int pos, Vector2Int searchVec)
+        {
+            Type type = dropList[pos.x][pos.y].type;
+            List<Drop> returnList=new List<Drop>();
+            returnList.Add(dropList[pos.x][pos.y]);
+            while (true)
+            {
+                pos += searchVec;
+                if (ParameterManager.Instance.InBoard(pos) && type == dropList[pos.x][pos.y].type)
+                {
+                    returnList.Add( dropList[pos.x][pos.y]);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            if (!(returnList.Count >= ParameterManager.Instance.destroyDropCount))
+            {
+                returnList.Clear();
+            }
+            else
+            {
+
+                returnList.ForEach(drop =>  drop.deleteFlag = true);
+            }
+
+            return returnList;
+
+        }
         private void DeleteDrop(List<Combo> combos)
         {
-            foreach (Combo combo in combos)
+            // foreach (Combo combo in combos)
+            // {
+            //     foreach (Drop drop in combo.comboDrops)
+            //     {
+            //         this.dropList[drop.pos.x][drop.pos.y] = null;
+            //         Debug.Log(drop.pos);
+            //         drop.Delete();
+            //     }
+            // }
+            for (int i = 0; i < ParameterManager.Instance.boardSize.x;i++)
             {
-                foreach (Drop drop in combo.comboDrops)
+                for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
                 {
-                    this.dropList[drop.pos.x][drop.pos.y] = null;
-                    drop.Delete();
+                    if (dropList[i][j].deleteFlag)
+                    {
+                        dropList[i][j].Delete();     
+                    }
                 }
             }
         }
 //TODO:ドロップの落ちる処理を実装する
         private void FallDrop()
         {
-            
+            for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+            {
+                for (int j = 1; j < ParameterManager.Instance.boardSize.y; j++)
+                {
+                    if (dropList[i][j] == null)
+                    {
+                        continue;
+                    }
+
+                    int searchPosY=j-1;
+                    while (dropList[i][searchPosY] == null)
+                    {
+                        searchPosY--;
+                        if (!ParameterManager.Instance.InBoard(new Vector2Int(i, searchPosY-1 )))
+                        {
+                            break;
+                        }
+
+                        
+
+                    }
+
+                    searchPosY++;
+                    
+
+                    if (j!=searchPosY )
+                    {
+                        try
+                        {
+                            dropList[i][searchPosY] = dropList[i][j];
+                            dropList[i][j] = null;
+                        }
+                        catch (System.Exception e)
+                        {
+                            Debug.LogError(e);
+                        }
+                    }
+                }
+            }
         }
 
         

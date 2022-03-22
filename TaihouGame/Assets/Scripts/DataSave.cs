@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SelectStage;
-using ExStage;
+using IM;
 
 public class DataSave : MonoBehaviour
 {
@@ -14,14 +14,9 @@ public class DataSave : MonoBehaviour
         {
             GoStageButton.maxStageNum = PlayerPrefs.GetInt("saveStageNum", 1);
             isLoaded = true;
-            if (GoStageButton.maxStageNum >= 10)
-            {
-                ExtraStage.canGoExtraStage = true;
-            }
-            else
-            {
-                ExtraStage.canGoExtraStage = false;
-            }
+            ItemManager.bigBaniCount = PlayerPrefs.GetInt("saveItemBigBani", 3);
+            ItemManager.zeroGravityCount = PlayerPrefs.GetInt("saveItemZeroGravity", 3);
+            ItemManager.penetrationCount = PlayerPrefs.GetInt("saveItemPenetration", 3);
         }
     }
 
@@ -33,6 +28,9 @@ public class DataSave : MonoBehaviour
     private void OnDestroy()
     {
         PlayerPrefs.SetInt("saveStageNum", GoStageButton.maxStageNum);
+        PlayerPrefs.SetInt("saveItemBigBani", ItemManager.bigBaniCount);
+        PlayerPrefs.SetInt("saveItemZeroGravity",ItemManager.zeroGravityCount);
+        PlayerPrefs.SetInt("saveItemPenetration",ItemManager.penetrationCount);
         PlayerPrefs.Save();
     }
 }

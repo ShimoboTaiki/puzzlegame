@@ -1,0 +1,171 @@
+{
+  "Nodes": [
+    {
+      "Annotation": "all_tundra_nodes",
+      "Action": "",
+      "Inputs": [],
+      "Outputs": [],
+      "TargetDirectories": [],
+      "PassIndex": 0,
+      "Deps": [
+        1,
+        2,
+        3
+      ],
+      "OverwriteOutputs": true,
+      "FrontendResponseFiles": [],
+      "AllowUnexpectedOutput": true,
+      "AllowedOutputSubstrings": [],
+      "DebugActionIndex": 0
+    },
+    {
+      "Annotation": "Il2Cpp /Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/il2cppOutput/Data/Metadata/global-metadata.dat",
+      "Action": "\"/Applications/Unity/Hub/Editor/2020.3.15f2/Unity.app/Contents/il2cpp/build/deploy/netcoreapp3.1/il2cpp\" --convert-to-cpp --emit-null-checks --enable-array-bounds-check --dotnetprofile=\"unityaot\" --additional-cpp=\"/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" --additional-cpp=\"/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp\" --incremental-g-c-time-slice=3 --avoid-dynamic-library-copy --profiler-report --map-file-parser=\"/Applications/Unity/Hub/Editor/2020.3.15f2/Unity.app/Contents/Tools/MapFileParser/MapFileParser\" --directory=\"/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed\" --generatedcppdir=\"/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/il2cppOutput\"",
+      "Inputs": [
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/Mono.Security.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/System.Configuration.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/System.Core.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/System.Xml.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/System.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/Unity.2D.IK.Runtime.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.AIModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.AndroidJNIModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.AnimationModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.AssetBundleModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.AudioModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.CoreModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.DirectorModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.GameCenterModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.GridModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.IMGUIModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.InputLegacyModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.InputModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.ParticleSystemModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.Physics2DModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.PhysicsModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.SharedInternalsModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.SpriteMaskModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.SpriteShapeModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.SubsystemsModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.TerrainModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.TextRenderingModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.TilemapModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.UIElementsNativeModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.UIModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.UnityWebRequestModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.VFXModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.VRModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.VideoModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.XRModule.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/UnityEngine.dll",
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Temp/StagingArea/Data/Managed/mscorlib.dll"
+      ],
+      "Outputs": [
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/il2cppOutput/Data/Metadata/global-metadata.dat"
+      ],
+      "TargetDirectories": [],
+      "PassIndex": 0,
+      "Deps": [],
+      "OverwriteOutputs": false,
+      "FrontendResponseFiles": [],
+      "AllowUnexpectedOutput": true,
+      "AllowedOutputSubstrings": [],
+      "DebugActionIndex": 1
+    },
+    {
+      "Annotation": "Copy Additional C++ File /Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp",
+      "Action": "cp \"/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" \"/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp\" ",
+      "Inputs": [
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp"
+      ],
+      "Outputs": [
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp"
+      ],
+      "TargetDirectories": [],
+      "PassIndex": 0,
+      "Deps": [
+        1
+      ],
+      "OverwriteOutputs": true,
+      "FrontendResponseFiles": [],
+      "AllowUnexpectedOutput": true,
+      "AllowedOutputSubstrings": [],
+      "DebugActionIndex": 2
+    },
+    {
+      "Annotation": "Copy Additional C++ File /Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp",
+      "Action": "cp \"/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp\" \"/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp\" ",
+      "Inputs": [
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp"
+      ],
+      "Outputs": [
+        "/Users/shitabouoonozomi/Documents/GitHub/puzzlegame/TaihouGame/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp"
+      ],
+      "TargetDirectories": [],
+      "PassIndex": 0,
+      "Deps": [
+        1
+      ],
+      "OverwriteOutputs": true,
+      "FrontendResponseFiles": [],
+      "AllowUnexpectedOutput": true,
+      "AllowedOutputSubstrings": [],
+      "DebugActionIndex": 3
+    }
+  ],
+  "FileSignatures": [
+    {
+      "File": "../../../../../../../Library"
+    },
+    {
+      "File": "../../../Temp/StagingArea/Data/Managed"
+    },
+    {
+      "File": "artifacts/buildprogram/tundra_buildprogram.dag.json"
+    },
+    {
+      "File": "il2cpp_settings.json"
+    },
+    {
+      "File": "unitylinker_settings.json"
+    }
+  ],
+  "GlobSignatures": [
+    {
+      "Path": "../../../Temp/StagingArea/Data/Managed"
+    }
+  ],
+  "ContentDigestExtensions": [
+    ".rsp",
+    ".dll",
+    ".exe",
+    ".txt",
+    ".c",
+    ".cpp",
+    ".h",
+    ".cs",
+    ".hpp"
+  ],
+  "StructuredLogFileName": "artifacts/tundra.log.json",
+  "StateFileName": "artifacts/TundraBuildState.state",
+  "StateFileNameTmp": "artifacts/TundraBuildState.state.tmp",
+  "ScanCacheFileName": "artifacts/tundra.scancache",
+  "ScanCacheFileNameTmp": "artifacts/tundra.scancache.tmp",
+  "DigestCacheFileName": "artifacts/tundra.digestcache",
+  "DigestCacheFileNameTmp": "artifacts/tundra.digestcache.tmp",
+        "NamedNodes": {
+          "all_tundra_nodes": 0
+        }
+,  "DefaultNodes": [
+    0
+  ],
+  "SharedResources": [],
+  "Scanners": [],
+  "Identifier": "artifacts/tundra.dag.json",
+  "BuildTitle": "Bee",
+  "RelativePathToRoot": ".."
+}

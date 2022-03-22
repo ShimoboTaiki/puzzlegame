@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Puzzle
 {
-    public class Combo : MonoBehaviour
+    public class Combo 
     {
         public Type type;
-        public List<Drop> comboDrops;
+        public HashSet<Drop> comboDrops;
         public Combo()
         {
-            comboDrops = new List<Drop>();
+            comboDrops = new HashSet<Drop>();
         }
     }
 }

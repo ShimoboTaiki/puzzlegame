@@ -16,11 +16,13 @@ namespace SelectStage
         // Start is called before the first frame update
         void Start()
         {
+
             if (buttonNumber < maxStageNum + 1)
             {
                 text.fontSize = 100;
                 text.text = buttonNumber.ToString();
                 isLocked = false;
+
             }
             else
             {
@@ -28,6 +30,7 @@ namespace SelectStage
                 text.text = buttonNumber.ToString() + "\nlocked";
                 isLocked = true;
             }
+
         }
 
         // Update is called once per frame
@@ -38,12 +41,14 @@ namespace SelectStage
 
         public void OnClickedGoStage()
         {
+
             if (!isLocked)
             {
                 StageManager.stageNum = buttonNumber;
-              
+
                 SceneManager.LoadScene("Stage");
             }
+
         }
     }
 }
