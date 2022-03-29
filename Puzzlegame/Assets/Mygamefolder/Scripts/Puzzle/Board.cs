@@ -122,9 +122,12 @@ namespace Puzzle
 
 		public bool SearchCombo(Vector2Int pos)
 		{
-			if (dropList[pos.x][pos.y].deleteFlag)
+			if (dropList[pos.x][pos.y] != null)
 			{
-				return false;
+				if (dropList[pos.x][pos.y].deleteFlag)
+				{
+					return false;
+				}
 			}
 			// Type  type = dropList[pos.x][pos.y].type;
 
@@ -137,15 +140,50 @@ namespace Puzzle
 
 		public bool GetComboDirection(Vector2Int pos, Vector2Int searchVec)
 		{
+			if (dropList[pos.x][pos.y] == null)
+			{
+				return false;
+			}
+
+			if (dropList[pos.x][pos.y].deleteFlag)
+			{
+				return false;
+			}
+
 			Type type = dropList[pos.x][pos.y].type;
 			List<Drop> returnList = new List<Drop>();
 			returnList.Add(dropList[pos.x][pos.y]);
+			Func<bool> exit = () =>
+			{
+				if (returnList.Count >= ParameterManager.Instance.destroyDropCount)
+				{
+					returnList.ForEach(drop => drop.deleteFlag = true);
+				}
+
+				return returnList.Count >= ParameterManager.Instance.destroyDropCount;
+			};
 			while (true)
 			{
 				pos += searchVec;
+				if (ParameterManager.Instance.InBoard(pos))
+				{
+					if (dropList[pos.x][pos.y] == null || dropList[pos.x][pos.y].deleteFlag)
+					{
+						break;
+					}
+				}
+
 				if (ParameterManager.Instance.InBoard(pos) && type == dropList[pos.x][pos.y].type)
 				{
-					SearchCombo(pos);
+					try
+					{
+						SearchCombo(pos);
+					}
+					catch (StackOverflowException e)
+					{
+						return exit();
+					}
+
 					returnList.Add(dropList[pos.x][pos.y]);
 				}
 				else
@@ -154,9 +192,7 @@ namespace Puzzle
 				}
 			}
 
-			returnList.ForEach(drop => drop.deleteFlag = true);
-
-			return returnList.Count >= ParameterManager.Instance.destroyDropCount;
+			return exit();
 		}
 
 		private void DeleteDrop()
@@ -165,9 +201,10 @@ namespace Puzzle
 			{
 				for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
 				{
-					if (dropList[i][j].deleteFlag)
+					if (dropList[i][j]!=null && dropList[i][j].deleteFlag)
 					{
 						dropList[i][j].Delete();
+						dropList[i][j] = null;
 					}
 				}
 			}
