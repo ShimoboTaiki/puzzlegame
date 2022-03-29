@@ -66,7 +66,7 @@ namespace Manager
         private void PoolingPush(System.Object key, GameObject obj)
         {
             obj.SetActive(false);
-            obj.transform.parent = this.transform;
+            obj.transform.SetParent(this.transform,true);
             _poolingStackMap[key].Push(obj);
         }
     }

@@ -31,7 +31,7 @@ namespace Player
             text.text = ParameterManager.Instance.GetDropPosition(mousePos) + System.Environment.NewLine + Input.mousePosition;
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                board.PuzzleProcess();
+                board.PuzzleProcess().Forget();
             }
 
             if (Input.GetKeyDown(KeyCode.A))
