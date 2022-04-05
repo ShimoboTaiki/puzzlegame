@@ -135,6 +135,10 @@ namespace Puzzle
 			bool upFlag = GetComboDirection(pos, Vector2Int.up);
 			bool downFlag = GetComboDirection(pos, Vector2Int.down);
 			bool leftFlag = GetComboDirection(pos, Vector2Int.left);
+			if (rightFlag || upFlag || downFlag || leftFlag)
+			{
+				dropList[pos.x][pos.y].deleteFlag = true;
+			}
 			return rightFlag || upFlag || downFlag || leftFlag;
 		}
 
@@ -145,46 +149,39 @@ namespace Puzzle
 				return false;
 			}
 
-			if (dropList[pos.x][pos.y].deleteFlag)
-			{
-				return false;
-			}
+			
 
 			Type type = dropList[pos.x][pos.y].type;
 			List<Drop> returnList = new List<Drop>();
+			dropList[pos.x][pos.y].deleteFlag = true;
 			returnList.Add(dropList[pos.x][pos.y]);
-			Func<bool> exit = () =>
+
+			bool Exit()
 			{
-				if (returnList.Count >= ParameterManager.Instance.destroyDropCount)
+				if (returnList.Count < ParameterManager.Instance.destroyDropCount)
 				{
-					returnList.ForEach(drop => drop.deleteFlag = true);
+					returnList.ForEach(drop => drop.deleteFlag = false);
 				}
 
 				return returnList.Count >= ParameterManager.Instance.destroyDropCount;
-			};
+			}
+
 			while (true)
 			{
 				pos += searchVec;
 				if (ParameterManager.Instance.InBoard(pos))
 				{
-					if (dropList[pos.x][pos.y] == null || dropList[pos.x][pos.y].deleteFlag)
+					if (dropList[pos.x][pos.y] == null )
 					{
-						break;
+						return Exit();
 					}
 				}
 
 				if (ParameterManager.Instance.InBoard(pos) && type == dropList[pos.x][pos.y].type)
 				{
-					try
-					{
-						SearchCombo(pos);
-					}
-					catch (StackOverflowException e)
-					{
-						return exit();
-					}
-
+					SearchCombo(pos);
 					returnList.Add(dropList[pos.x][pos.y]);
+					dropList[pos.x][pos.y].deleteFlag = true;
 				}
 				else
 				{
@@ -192,7 +189,7 @@ namespace Puzzle
 				}
 			}
 
-			return exit();
+			return Exit();
 		}
 
 		private void DeleteDrop()
