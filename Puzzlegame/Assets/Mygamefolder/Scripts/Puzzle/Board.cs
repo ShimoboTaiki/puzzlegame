@@ -6,245 +6,246 @@ using DG.Tweening;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Linq;
 using Random = UnityEngine.Random;
 using UniRx;
 using UniRx.Triggers;
 
 namespace Puzzle
 {
-	public class Board : MonoBehaviour
-	{
-		List<List<Drop>> dropList = new List<List<Drop>>();
-		public GameObject canvasObject;
-		public Text debugText;
+    public class Board : MonoBehaviour
+    {
+        private List<List<Drop>> dropList = new List<List<Drop>>();
+        public GameObject canvasObject;
+        public Text debugText;
+        private List<HashSet<Drop>> _comboDrops = new List<HashSet<Drop>>();
 
-		void Awake()
-		{
-			for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
-			{
-				dropList.Add(new List<Drop>());
-				for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
-				{
-					Vector2Int pos = new Vector2Int(i, j);
-					Type type = (Type) Random.Range(0, ColorManager.Instance.COLORMAXKIND);
-					Drop drop = new Drop(pos, type, canvasObject);
-					dropList[i].Add(drop);
-				}
-			}
+        private readonly List<Vector2Int> _directions = new List<Vector2Int>()
+            {Vector2Int.down, Vector2Int.up, Vector2Int.right, Vector2Int.left,};
 
-			this.UpdateAsObservable().Subscribe(_ => Viewing()).AddTo(this);
-		}
+        void Awake()
+        {
+            for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+            {
+                dropList.Add(new List<Drop>());
+                for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
+                {
+                    var drop = CreateDrop(i, j);
+                    dropList[i].Add(drop);
+                }
+            }
 
-		void Viewing()
-		{
-			string boardText = "";
-			for (int j = ParameterManager.Instance.boardSize.y - 1; j >= 0; j--)
-			{
-				for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
-				{
-					if (dropList[i][j] == null)
-					{
-						boardText += "N";
-					}
-					else
-					{
-						if (dropList[i][j].deleteFlag)
-							boardText += "<color=white>";
-						else
-							boardText += "<color=black>";
-						boardText += dropList[i][j].type switch
-						{
-							Type.blue => "B",
-							Type.green => "G",
-							Type.yellow => "Y",
-							Type.red => "R",
-							_ => throw new ArgumentOutOfRangeException()
-						};
-						boardText += "</color>";
-					}
-				}
+            this.UpdateAsObservable().Subscribe(_ => Viewing()).AddTo(this);
+        }
 
-				boardText += System.Environment.NewLine;
-			}
+        private Drop CreateDrop(int i, int j)
+        {
+            Vector2Int pos = new Vector2Int(i, j);
+            Type type = (Type) Random.Range(0, ColorManager.Instance.COLORMAXKIND);
+            Drop drop = new Drop(pos, type, canvasObject);
+            return drop;
+        }
 
-			debugText.text = boardText;
-		}
+        void Viewing()
+        {
+            try
+            {
+                string boardText = "";
+                for (int j = ParameterManager.Instance.boardSize.y - 1; j >= 0; j--)
+                {
+                    for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+                    {
+                        if (dropList[i][j] == null)
+                        {
+                            boardText += "N";
+                        }
+                        else
+                        {
+                            if (dropList[i][j].deleteIndex >= 0)
+                            {
+                                boardText += "<color=white>";
+                            }
+                            else
+                                boardText += "<color=black>";
 
-		public void ChangeDrop(Vector2Int dropPosA, Vector2Int dropPosB)
-		{
-			if ((!ParameterManager.Instance.InBoard(dropPosA)) || (!ParameterManager.Instance.InBoard(dropPosB)))
-			{
-				Debug.LogWarning("画面外が指定されました。");
-				return;
-			}
+                            boardText += dropList[i][j].type switch
+                            {
+                                Type.blue => "B",
+                                Type.green => "G",
+                                Type.yellow => "Y",
+                                Type.red => "R",
+                                _ => throw new ArgumentOutOfRangeException()
+                            };
+                            boardText += "</color>";
+                        }
+                    }
 
-			Vector2 canvasPosA = ParameterManager.Instance.GetDropCanvasPosition(dropPosA);
-			Vector2 canvasPosB = ParameterManager.Instance.GetDropCanvasPosition(dropPosB);
+                    boardText += System.Environment.NewLine;
+                }
 
-			dropList[dropPosA.x][dropPosA.y].Move(canvasPosB);
-			dropList[dropPosB.x][dropPosB.y].Move(canvasPosA);
-			(dropList[dropPosA.x][dropPosA.y], dropList[dropPosB.x][dropPosB.y]) = (dropList[dropPosB.x][dropPosB.y], dropList[dropPosA.x][dropPosA.y]);
-		}
+                debugText.text = boardText;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                debugText.text = "只今、drop listの中身を操作中...";
+            }
+        }
 
-		public async UniTaskVoid PuzzleProcess()
-		{
-			for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
-			{
-				for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
-				{
-					if (this.SearchCombo(new Vector2Int(i, j)))
-					{
-						DeleteDrop();
-						await UniTask.Delay(TimeSpan.FromSeconds(0.5));
-					}
-				}
-			}
-		}
+        public void ChangeDrop(Vector2Int dropPosA, Vector2Int dropPosB)
+        {
+            if ((!ParameterManager.Instance.InBoard(dropPosA)) || (!ParameterManager.Instance.InBoard(dropPosB)))
+            {
+                Debug.LogWarning("画面外が指定されました。");
+                return;
+            }
 
-		public void Otosu()
-		{
-			FallDrop();
-		}
+            Vector2 canvasPosA = ParameterManager.Instance.GetDropCanvasPosition(dropPosA);
+            Vector2 canvasPosB = ParameterManager.Instance.GetDropCanvasPosition(dropPosB);
 
-		public void OtosuMitame()
-		{
-			for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
-			{
-				for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
-				{
-					if (dropList[i][j] != null)
-					{
-						dropList[i][j].IndexMove(new Vector2Int(i, j));
-					}
-				}
-			}
-		}
+            dropList[dropPosA.x][dropPosA.y].Move(canvasPosB);
+            dropList[dropPosB.x][dropPosB.y].Move(canvasPosA);
+            (dropList[dropPosA.x][dropPosA.y], dropList[dropPosB.x][dropPosB.y]) = (dropList[dropPosB.x][dropPosB.y],
+                dropList[dropPosA.x][dropPosA.y]);
+        }
 
-		public bool SearchCombo(Vector2Int pos)
-		{
-			if (dropList[pos.x][pos.y] != null)
-			{
-				if (dropList[pos.x][pos.y].deleteFlag)
-				{
-					return false;
-				}
-			}
-			// Type  type = dropList[pos.x][pos.y].type;
+        public async UniTaskVoid PuzzleProcess()
+        {
+            _comboDrops.Clear();
 
-			bool rightFlag = GetComboDirection(pos, Vector2Int.right);
-			bool upFlag = GetComboDirection(pos, Vector2Int.up);
-			bool downFlag = GetComboDirection(pos, Vector2Int.down);
-			bool leftFlag = GetComboDirection(pos, Vector2Int.left);
-			if (rightFlag || upFlag || downFlag || leftFlag)
-			{
-				dropList[pos.x][pos.y].deleteFlag = true;
-			}
-			return rightFlag || upFlag || downFlag || leftFlag;
-		}
+            for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+            {
+                for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
+                {
+                    SearchCombo(new Vector2Int(i, j));
+                }
+            }
 
-		public bool GetComboDirection(Vector2Int pos, Vector2Int searchVec)
-		{
-			if (dropList[pos.x][pos.y] == null)
-			{
-				return false;
-			}
+            await DeleteDrop(_comboDrops);
+            FallDrop();
+        }
 
-			
+        public void Otosu()
+        {
+            FallDrop();
+        }
 
-			Type type = dropList[pos.x][pos.y].type;
-			List<Drop> returnList = new List<Drop>();
-			dropList[pos.x][pos.y].deleteFlag = true;
-			returnList.Add(dropList[pos.x][pos.y]);
+        public void OtosuMitame()
+        {
+            for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+            {
+                for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
+                {
+                    if (dropList[i][j] != null)
+                    {
+                        dropList[i][j].IndexMove(new Vector2Int(i, j));
+                    }
+                }
+            }
+        }
 
-			bool Exit()
-			{
-				if (returnList.Count < ParameterManager.Instance.destroyDropCount)
-				{
-					returnList.ForEach(drop => drop.deleteFlag = false);
-				}
+        private void SearchCombo(Vector2Int pos)
+        {
+            if (dropList[pos.x][pos.y] != null)
+            {
+                if (dropList[pos.x][pos.y].deleteIndex >= 0)
+                {
+                    return;
+                }
+            }
 
-				return returnList.Count >= ParameterManager.Instance.destroyDropCount;
-			}
+            _directions.ForEach(direction => GetComboDirection(pos, direction));
+        }
 
-			while (true)
-			{
-				pos += searchVec;
-				if (ParameterManager.Instance.InBoard(pos))
-				{
-					if (dropList[pos.x][pos.y] == null )
-					{
-						return Exit();
-					}
-				}
+        private void GetComboDirection(Vector2Int pos, Vector2Int searchVec)
+        {
+            if (dropList[pos.x][pos.y] == null) return;
 
-				if (ParameterManager.Instance.InBoard(pos) && type == dropList[pos.x][pos.y].type)
-				{
-					SearchCombo(pos);
-					returnList.Add(dropList[pos.x][pos.y]);
-					dropList[pos.x][pos.y].deleteFlag = true;
-				}
-				else
-				{
-					break;
-				}
-			}
+            var type = dropList[pos.x][pos.y].type;
+            var drops = new HashSet<Drop> {dropList[pos.x][pos.y]};
+            while (true)
+            {
+                pos += searchVec;
 
-			return Exit();
-		}
+                if (ParameterManager.Instance.InBoard(pos) && type == dropList[pos.x][pos.y].type)
+                {
+                    drops.Add(dropList[pos.x][pos.y]);
+                }
+                else
+                {
+                    break;
+                }
+            }
 
-		private void DeleteDrop()
-		{
-			for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
-			{
-				for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
-				{
-					if (dropList[i][j]!=null && dropList[i][j].deleteFlag)
-					{
-						dropList[i][j].Delete();
-						dropList[i][j] = null;
-					}
-				}
-			}
-		}
+            if (drops.Count < ParameterManager.Instance.destroyDropCount) return;
 
-//TODO:ドロップの落ちる処理を実装する
-		private void FallDrop()
-		{
-			for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
-			{
-				for (int j = 1; j < ParameterManager.Instance.boardSize.y; j++)
-				{
-					if (dropList[i][j] == null)
-					{
-						continue;
-					}
+            if (drops.Any(drop => drop.deleteIndex >= 0))
+            {
+                //他でコンボにカウントされているか探索
+                var otherComboJoinDrops = drops.Where(drop => drop.deleteIndex >= 0)
+                    .OrderBy(x => x) //左下から消えてほしいので昇順ソート
+                    .ToList();
 
-					int searchPosY = j - 1;
-					while (dropList[i][searchPosY] == null)
-					{
-						searchPosY--;
-						if (!ParameterManager.Instance.InBoard(new Vector2Int(i, searchPosY - 1)))
-						{
-							break;
-						}
-					}
+                //今回見つかったコンボとindex[0]を結合
+                var margeTargetCombo = _comboDrops[otherComboJoinDrops[0].deleteIndex];
+                margeTargetCombo.UnionWith(drops);
 
-					searchPosY++;
-					
-					if (j != searchPosY)
-					{
-						try
-						{
-							dropList[i][searchPosY] = dropList[i][j];
-							dropList[i][j] = null;
-						}
-						catch (Exception e)
-						{
-							Debug.LogError(e);
-						}
-					}
-				}
-			}
-		}
-	}
+                //既存のもので今回結合できることが明らかになったコンボのインデックスの一覧を取得する
+                var margeIndexes = otherComboJoinDrops
+                    .Skip(1) //1番の要素に対してマージするので、1回処理をスキップする。
+                    .Select(drop => drop.deleteIndex)
+                    .OrderBy(x => -x) //下でRemoveAtにてIndexを使用している。前の方から詰めて消すとインデックスがずれるため逆順にソートしている
+                    .ToList();
+
+                //既存のコンボと今回マージできるものを結合している
+                margeIndexes.ForEach(comboIndex => margeTargetCombo.UnionWith(_comboDrops[comboIndex]));
+
+                //結合した既存コンボをリストから除外 
+                margeIndexes.ForEach(comboIndex => _comboDrops.RemoveAt(comboIndex));
+
+                //deleteIndexの上書き
+                margeTargetCombo.ToList().ForEach(drop => drop.deleteIndex = otherComboJoinDrops[0].deleteIndex);
+            }
+            else
+            {
+                drops.ToList().ForEach(drop => drop.deleteIndex = _comboDrops.Count);
+                _comboDrops.Add(drops);
+            }
+        }
+
+        private async UniTask DeleteDrop(IEnumerable<IEnumerable<Drop>> deleteDropsEnumerable)
+        {
+            foreach (var deleteDrops in deleteDropsEnumerable)
+            {
+                foreach (var drop in deleteDrops)
+                {
+                    var pos = drop.pos;
+                    dropList[pos.x][pos.y] = null;
+                    drop.Delete();
+                }
+
+                await UniTask.Delay(TimeSpan.FromSeconds(0.5));
+            }
+        }
+
+        //TODO:ドロップの落ちる処理を実装する
+        private void FallDrop()
+        {
+            for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+            {
+                //dropList[i].Remove(null);
+                int rowCount = dropList[i].Count;
+                for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
+                {
+                    if (dropList[i][j] != null && dropList[i][j].deleteIndex < 0)
+                    {
+                        dropList[i][j].pos = new Vector2Int(i, j);
+                    }
+                    else
+                    {
+                        dropList[i][j] = CreateDrop(i, j);
+                    }
+                }
+            }
+        }
+    }
 }

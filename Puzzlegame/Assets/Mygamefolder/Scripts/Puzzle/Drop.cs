@@ -16,11 +16,11 @@ namespace Puzzle
 		public Type type;
 		public GameObject dropObject;
 		private Image image;
-		public bool deleteFlag;
+		public int deleteIndex;
 
 		public Drop(Vector2Int pos, Type type, GameObject canvasObject)
 		{
-			this.deleteFlag = false;
+			this.deleteIndex = -100;
 			this.pos = pos;
 			this.type = type;
 			this.dropObject = PoolingManager.Instance.PopPoolingObject(type);
