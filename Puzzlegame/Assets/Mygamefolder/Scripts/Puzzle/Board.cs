@@ -23,12 +23,17 @@ namespace Puzzle
         private readonly List<Vector2Int> _directions = new List<Vector2Int>()
             {Vector2Int.down, Vector2Int.up, Vector2Int.right, Vector2Int.left,};
 
+        private int boardSizeX;
+        private int boardSizeY;
+
         void Awake()
         {
-            for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+            boardSizeX = ParameterManager.Instance.boardSize.x;
+            boardSizeY = ParameterManager.Instance.boardSize.y;
+            for (int i = 0; i < boardSizeX; i++)
             {
                 dropList.Add(new List<Drop>());
-                for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
+                for (int j = 0; j < boardSizeY; j++)
                 {
                     var drop = CreateDrop(i, j);
                     dropList[i].Add(drop);
@@ -46,14 +51,21 @@ namespace Puzzle
             return drop;
         }
 
+        private Drop CreateFallDrop(int i, int j,Vector2Int viewIndexPos)
+        {
+            Drop drop = CreateDrop(i, j);
+            drop.SetIndexViewPosition(viewIndexPos);
+            return drop;
+        }
+
         void Viewing()
         {
             try
             {
                 string boardText = "";
-                for (int j = ParameterManager.Instance.boardSize.y - 1; j >= 0; j--)
+                for (int j = boardSizeY - 1; j >= 0; j--)
                 {
-                    for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+                    for (int i = 0; i < boardSizeX; i++)
                     {
                         if (dropList[i][j] == null)
                         {
@@ -112,11 +124,23 @@ namespace Puzzle
         {
             _comboDrops.Clear();
 
-            for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+            for (int i = 0; i < boardSizeX; i++)
             {
-                for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
+                for (int j = 0; j < boardSizeY; j++)
                 {
                     SearchCombo(new Vector2Int(i, j));
+                }
+            }
+
+            for (int i = 0; i < boardSizeX; i++)
+            {
+                for (int j = 0; j < boardSizeY; j++)
+                {
+                    JoinCombo(new Vector2Int(i, j),new Vector2Int(1,0));
+                    JoinCombo(new Vector2Int(i, j),new Vector2Int(0,1));
+                    // JoinCombo(new Vector2Int(i, j),new Vector2Int(1,0));
+                    // JoinCombo(new Vector2Int(i, j),new Vector2Int(1,0));
+                    
                 }
             }
 
@@ -131,9 +155,9 @@ namespace Puzzle
 
         public void OtosuMitame()
         {
-            for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+            for (int i = 0; i < boardSizeX; i++)
             {
-                for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
+                for (int j = 0; j < boardSizeY; j++)
                 {
                     if (dropList[i][j] != null)
                     {
@@ -152,7 +176,6 @@ namespace Puzzle
                     return;
                 }
             }
-
             _directions.ForEach(direction => GetComboDirection(pos, direction));
         }
 
@@ -182,7 +205,7 @@ namespace Puzzle
             {
                 //他でコンボにカウントされているか探索
                 var otherComboJoinDrops = drops.Where(drop => drop.deleteIndex >= 0)
-                    .OrderBy(x => x) //左下から消えてほしいので昇順ソート
+                    //.OrderBy(x => x) //左下から消えてほしいので昇順ソート
                     .ToList();
 
                 //今回見つかったコンボとindex[0]を結合
@@ -230,11 +253,9 @@ namespace Puzzle
         //TODO:ドロップの落ちる処理を実装する
         private void FallDrop()
         {
-            for (int i = 0; i < ParameterManager.Instance.boardSize.x; i++)
+            for (int i = 0; i < boardSizeX; i++)
             {
-                //dropList[i].Remove(null);
-                int rowCount = dropList[i].Count;
-                for (int j = 0; j < ParameterManager.Instance.boardSize.y; j++)
+                for (int j = 0; j < boardSizeY; j++)
                 {
                     if (dropList[i][j] != null && dropList[i][j].deleteIndex < 0)
                     {
@@ -242,8 +263,44 @@ namespace Puzzle
                     }
                     else
                     {
-                        dropList[i][j] = CreateDrop(i, j);
+                        dropList[i][j] = CreateFallDrop(i, j ,new Vector2Int(i,j+ParameterManager.Instance.boardSize.y));
                     }
+                }
+            }
+        }
+
+        private void JoinCombo(Vector2Int pos,Vector2Int searchVec)
+        {
+            if (!ParameterManager.Instance.InBoard(pos + searchVec)) return;
+
+            int posIndex = dropList[pos.x][pos.y].deleteIndex;
+            int searchPosIndex = dropList[pos.x+searchVec.x][pos.y+searchVec.y].deleteIndex;
+
+            if (dropList[pos.x][pos.y].type == dropList[pos.x + searchVec.x][pos.y + searchVec.y].type)
+            {
+                if (posIndex >= 0 && searchPosIndex >= 0)
+                {
+                    if(posIndex==searchPosIndex)return;
+
+                    foreach (var drop in _comboDrops[Math.Max(posIndex, searchPosIndex)])
+                    {
+                        _comboDrops[Math.Min(posIndex, searchPosIndex)].Add(drop);
+                        
+                        drop.deleteIndex = Math.Min(posIndex, searchPosIndex);
+                    }
+
+                    foreach (var dropSet in _comboDrops)
+                    {
+                        foreach (var drop in dropSet)
+                        {
+                            if (drop.deleteIndex > Math.Max(posIndex, searchPosIndex))
+                            {
+                                drop.deleteIndex--;
+                            }
+                        }
+                    }
+
+                    _comboDrops.RemoveAt(Math.Max(posIndex, searchPosIndex));
                 }
             }
         }

@@ -20,6 +20,11 @@ namespace Puzzle
 
 		public Drop(Vector2Int pos, Type type, GameObject canvasObject)
 		{
+			ValueSetting(pos, type, canvasObject);
+		}
+
+		private void ValueSetting(Vector2Int pos, Type type, GameObject canvasObject)
+		{
 			this.deleteIndex = -100;
 			this.pos = pos;
 			this.type = type;
@@ -33,10 +38,28 @@ namespace Puzzle
 				dropObject.transform.localPosition = ParameterManager.Instance.GetDropCanvasPosition(pos);
 			}
 		}
+		/// <summary>
+		/// 見た目とロジックを別々にする
+		/// </summary>
+		/// <param name="pos"></param>
+		/// <param name="type"></param>
+		/// <param name="canvasObject"></param>
+		/// <param name="viewPos"></param>
+		public Drop(Vector2Int pos, Type type, GameObject canvasObject,Vector2 viewPos)
+		{
+			ValueSetting(pos, type, canvasObject);
+			dropObject.transform.localPosition = viewPos;
+
+		}
 
 		public void IndexMove(Vector2Int indexPos)
 		{
 			Move(ParameterManager.Instance.GetDropCanvasPosition(indexPos));
+		}
+
+		public void SetIndexViewPosition(Vector2Int pos)
+		{
+			dropObject.transform.localPosition = ParameterManager.Instance.GetDropCanvasPosition(pos);
 		}
 
 		public void Move(Vector2 pos)
