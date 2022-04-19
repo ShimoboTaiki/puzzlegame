@@ -54,14 +54,12 @@
   <ItemGroup>
      <Compile Include="Assets\Mygamefolder\Scripts\Manager\ColorManager.cs" />
      <Compile Include="Assets\Mygamefolder\Scripts\Puzzle\Board.cs" />
-     <Compile Include="Assets\Mygamefolder\Scripts\Puzzle\Combo.cs" />
      <Compile Include="Assets\Mygamefolder\Scripts\SingletonMonoBehaviour.cs" />
      <Compile Include="Assets\Mygamefolder\Scripts\Puzzle\Drop.cs" />
      <Compile Include="Assets\Mygamefolder\Scripts\Manager\PoolingManager.cs" />
      <Compile Include="Assets\Mygamefolder\Scripts\Puzzle\Type.cs" />
      <Compile Include="Assets\Mygamefolder\Scripts\Player\DropMovement.cs" />
      <Compile Include="Assets\Mygamefolder\Scripts\Manager\DropInputManager.cs" />
-     <Compile Include="Assets\Mygamefolder\Scripts\Puzzle\DestroyDrop.cs" />
      <Compile Include="Assets\Mygamefolder\Scripts\Manager\ParameterManager.cs" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.15f2/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>

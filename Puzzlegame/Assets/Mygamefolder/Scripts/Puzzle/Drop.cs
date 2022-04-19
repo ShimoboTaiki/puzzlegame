@@ -51,7 +51,10 @@ namespace Puzzle
 			dropObject.transform.localPosition = viewPos;
 
 		}
-
+/// <summary>
+/// 指定したロジック座標へ動く
+/// </summary>
+/// <param name="indexPos">指定した座標</param>
 		public void IndexMove(Vector2Int indexPos)
 		{
 			Move(ParameterManager.Instance.GetDropCanvasPosition(indexPos));
@@ -62,6 +65,10 @@ namespace Puzzle
 			dropObject.transform.localPosition = ParameterManager.Instance.GetDropCanvasPosition(pos);
 		}
 
+		/// <summary>
+		/// 指定したキャンバス座標へ動く
+		/// </summary>
+		/// <param name="pos">指定したキャンバス座標</param>
 		public void Move(Vector2 pos)
 		{
 			dropObject.transform.DOLocalMove(pos, ParameterManager.Instance.moveTime).SetEase(Ease.Linear);

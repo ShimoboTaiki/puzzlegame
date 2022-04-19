@@ -5,6 +5,8 @@ using Manager;
 using UnityEngine.UI;
 using UniRx;
 using Puzzle;
+using Cysharp.Threading.Tasks;
+using System;
 namespace Player
 {
     public class DropMovement : MonoBehaviour
@@ -14,35 +16,33 @@ namespace Player
         private Vector2Int dropPastPos=Vector2Int.zero;
         private void Start()
         {
-            ParameterManager.Instance
-                .ObserveEveryValueChanged(instance => instance.GetDropPosition(Input.mousePosition))
-                .Where(pos=>ParameterManager.Instance.InBoard(pos)&&(dropPastPos-pos).magnitude<1.1f)
-                .Subscribe(pos => {
-                    Debug.Log("動いた");
-                    board.ChangeDrop(pos,dropPastPos);
-                    dropPastPos = pos;
-                })
-                .AddTo(this);
+            PlayerOperation().Forget();
+            
+        }
+
+        async UniTaskVoid PlayerOperation()
+        {
+            while (true)
+            {
+                IDisposable playerOperationDispose=
+                ParameterManager.Instance
+                    .ObserveEveryValueChanged(instance => instance.GetDropPosition(Input.mousePosition))
+                    .Where(pos=>ParameterManager.Instance.InBoard(pos)&&(dropPastPos-pos).magnitude<1.1f)
+                    .Subscribe(pos => {
+                        Debug.Log("動いた");
+                        board.ChangeDrop(pos,dropPastPos);
+                        dropPastPos = pos;
+                    })
+                    .AddTo(this);
+                using (playerOperationDispose)
+                {
+                    await UniTask.WaitWhile(() => Input.GetMouseButtonDown(0));
+                    await UniTask.WaitWhile(() => Input.GetMouseButtonUp(0));
+                    await board.PuzzleProcess();
+                }
+            }
         }
         // Update is called once per frame
-        void Update()
-        {
-            Vector2 mousePos = Input.mousePosition;
-            text.text = ParameterManager.Instance.GetDropPosition(mousePos) + System.Environment.NewLine + Input.mousePosition;
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                board.PuzzleProcess().Forget();
-            }
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                board.Otosu();
-            }
-
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                board.OtosuMitame();
-            }
-        }
+        
     }
 }

@@ -120,7 +120,7 @@ namespace Puzzle
                 dropList[dropPosA.x][dropPosA.y]);
         }
 
-        public async UniTaskVoid PuzzleProcess()
+        public async UniTask PuzzleProcess()
         {
             _comboDrops.Clear();
 
@@ -144,28 +144,12 @@ namespace Puzzle
                 }
             }
 
-            await DeleteDrop(_comboDrops);
+            await DeleteDrop();
             FallDrop();
         }
 
-        public void Otosu()
-        {
-            FallDrop();
-        }
 
-        public void OtosuMitame()
-        {
-            for (int i = 0; i < boardSizeX; i++)
-            {
-                for (int j = 0; j < boardSizeY; j++)
-                {
-                    if (dropList[i][j] != null)
-                    {
-                        dropList[i][j].IndexMove(new Vector2Int(i, j));
-                    }
-                }
-            }
-        }
+
 
         private void SearchCombo(Vector2Int pos)
         {
@@ -235,38 +219,59 @@ namespace Puzzle
             }
         }
 
-        private async UniTask DeleteDrop(IEnumerable<IEnumerable<Drop>> deleteDropsEnumerable)
+        private async UniTask DeleteDrop()
         {
-            foreach (var deleteDrops in deleteDropsEnumerable)
+            for (int index = 0; index < _comboDrops.Count; index++)
             {
-                foreach (var drop in deleteDrops)
+                List<Drop> deleteList = new List<Drop>();
+                for (int i = 0; i < boardSizeX; i++)
                 {
-                    var pos = drop.pos;
-                    dropList[pos.x][pos.y] = null;
-                    drop.Delete();
+                    for (int j = 0; j < boardSizeY; j++)
+                    {
+                        if (index == dropList[i][j].deleteIndex)
+                        {
+                            deleteList.Add(dropList[i][j]);
+                        }
+                    }
                 }
 
+                deleteList.ForEach(drop => drop.Delete());
                 await UniTask.Delay(TimeSpan.FromSeconds(0.5));
             }
+            
         }
 
         //TODO:ドロップの落ちる処理を実装する
         private void FallDrop()
         {
+            #region Dropへのロジック部分
+            
             for (int i = 0; i < boardSizeX; i++)
             {
+                dropList[i] = dropList[i].Where(drop => drop != null && drop.deleteIndex < 0).ToList();
                 for (int j = 0; j < boardSizeY; j++)
                 {
-                    if (dropList[i][j] != null && dropList[i][j].deleteIndex < 0)
+                    if (j<dropList[i].Count)
                     {
                         dropList[i][j].pos = new Vector2Int(i, j);
                     }
                     else
                     {
-                        dropList[i][j] = CreateFallDrop(i, j ,new Vector2Int(i,j+ParameterManager.Instance.boardSize.y));
+                        dropList[i].Add(CreateFallDrop(i, j ,new Vector2Int(i,j+ParameterManager.Instance.boardSize.y)));
                     }
                 }
             }
+            #endregion
+            #region Dropの見た目
+
+            for (int i = 0; i < boardSizeX; i++)
+            {
+                for (int j = 0; j < boardSizeY; j++)
+                {
+                    dropList[i][j].IndexMove(dropList[i][j].pos);
+                }
+            }
+            #endregion
         }
 
         private void JoinCombo(Vector2Int pos,Vector2Int searchVec)
