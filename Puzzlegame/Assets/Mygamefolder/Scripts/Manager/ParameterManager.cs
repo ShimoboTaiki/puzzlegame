@@ -14,7 +14,7 @@ namespace Manager
         [Header("ドロップが消える個数")] public int destroyDropCount=3;
         [FormerlySerializedAs("prefab")] public GameObject dropPrefab;        
 
-        public Vector2Int GetDropPosition(Vector2 mousePos)
+        public Vector2Int GetIndexPosition(Vector2 mousePos)
         {
             Vector2 pos;
             pos.x = mousePos.x - Screen.width/2;

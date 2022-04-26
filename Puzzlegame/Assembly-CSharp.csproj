@@ -61,6 +61,7 @@
      <Compile Include="Assets\Mygamefolder\Scripts\Player\DropMovement.cs" />
      <Compile Include="Assets\Mygamefolder\Scripts\Manager\DropInputManager.cs" />
      <Compile Include="Assets\Mygamefolder\Scripts\Manager\ParameterManager.cs" />
+     <Compile Include="Assets\Mygamefolder\Scripts\Test\ClickView.cs" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.15f2/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

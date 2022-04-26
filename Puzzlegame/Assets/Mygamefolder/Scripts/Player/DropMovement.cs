@@ -7,13 +7,16 @@ using UniRx;
 using Puzzle;
 using Cysharp.Threading.Tasks;
 using System;
+using UniRx.Triggers;
+using Test;
+
 namespace Player
 {
     public class DropMovement : MonoBehaviour
     {
         public Text text;
         public Puzzle.Board board;
-        private Vector2Int dropPastPos=Vector2Int.zero;
+        
         private void Start()
         {
             PlayerOperation().Forget();
@@ -24,25 +27,53 @@ namespace Player
         {
             while (true)
             {
-                IDisposable playerOperationDispose=
-                ParameterManager.Instance
-                    .ObserveEveryValueChanged(instance => instance.GetDropPosition(Input.mousePosition))
-                    .Where(pos=>ParameterManager.Instance.InBoard(pos)&&(dropPastPos-pos).magnitude<1.1f)
-                    .Subscribe(pos => {
-                        Debug.Log("動いた");
-                        board.ChangeDrop(pos,dropPastPos);
-                        dropPastPos = pos;
-                    })
-                    .AddTo(this);
-                using (playerOperationDispose)
+                await UniTask.WaitUntil(() => Input.GetMouseButtonDown(0));
+                ClickView.Instance.MouseButtonDown();
+                Vector2Int currentPos=ParameterManager.Instance.GetIndexPosition(Input.mousePosition);
+                if (!ParameterManager.Instance.InBoard(currentPos))
                 {
-                    await UniTask.WaitWhile(() => Input.GetMouseButtonDown(0));
-                    await UniTask.WaitWhile(() => Input.GetMouseButtonUp(0));
-                    await board.PuzzleProcess();
+                    continue;
                 }
+
+                ReactiveProperty<Vector2Int> playerPos = new ReactiveProperty<Vector2Int>(currentPos);
+                var mouseObserver = this.UpdateAsObservable().Subscribe(_ =>
+                    playerPos.Value = ParameterManager.Instance.GetIndexPosition(Input.mousePosition));
+                playerPos.Subscribe(value =>
+                {
+                    board.ChangeDrop(value, currentPos);
+                    currentPos = value;
+                });
+                await UniTask.WaitWhile(() => Input.GetMouseButton(0));
+                mouseObserver.Dispose();
+                playerPos.Dispose();
+                ClickView.Instance.MouseButtonUp();
+                await board.PuzzleProcess();
+                ClickView.Instance.Clear();
             }
+            
+            // while (true)
+            // {
+            //     Vector2Int dropPastPos=Vector2Int.zero;
+            //     IDisposable playerOperationDispose=
+            //     ParameterManager.Instance
+            //         .ObserveEveryValueChanged(instance => instance.GetIndexPosition(Input.mousePosition))
+            //         .Where(pos=>ParameterManager.Instance.InBoard(pos)&&(dropPastPos-pos).magnitude<1.1f)
+            //         .Subscribe(pos => {
+            //             Debug.Log("動いた");
+            //             board.ChangeDrop(pos,dropPastPos);
+            //             dropPastPos = pos;
+            //         })
+            //         .AddTo(this);
+            //     using (playerOperationDispose)
+            //     {
+            //         await UniTask.WaitWhile(() => Input.GetMouseButtonDown(0));
+            //         //await UniTask.WhenAll (UniTask.WaitWhile(() => Input.GetMouseButtonUp(0)),UniTask.Delay(TimeSpan.FromSeconds(1)));
+            //         await UniTask.WaitWhile(() => Input.GetMouseButtonUp(0));
+            //         await board.PuzzleProcess();
+            //     }
+            // }
         }
-        // Update is called once per frame
+        
         
     }
 }
