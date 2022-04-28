@@ -120,7 +120,7 @@ namespace Puzzle
                 dropList[dropPosA.x][dropPosA.y]);
         }
 
-        public async UniTask PuzzleProcess()
+        public async UniTask<bool> PuzzleProcess()
         {
             _comboDrops.Clear();
 
@@ -146,6 +146,13 @@ namespace Puzzle
 
             await DeleteDrop();
             FallDrop();
+            if (_comboDrops.Count == 0)
+            {
+                return false;
+            }
+
+            return true;
+
         }
 
 

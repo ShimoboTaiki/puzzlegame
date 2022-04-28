@@ -47,7 +47,15 @@ namespace Player
                 mouseObserver.Dispose();
                 playerPos.Dispose();
                 ClickView.Instance.MouseButtonUp();
-                await board.PuzzleProcess();
+                bool comboLoop = true;
+                while (comboLoop)
+                {
+                    comboLoop=await board.PuzzleProcess();
+                    if (comboLoop)
+                    {
+                        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+                    }
+                }
                 ClickView.Instance.Clear();
             }
             
